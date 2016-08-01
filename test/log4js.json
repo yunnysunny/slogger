@@ -1,0 +1,9 @@
+{
+    "appenders": [
+        {"type": "console"},
+        {"type": "dateFile", "filename": "debug.log", "pattern": "-yyyy-MM-dd", "backups": 10, "category": "debug"}, 
+        {"type": "dateFile", "filename": "trace.log", "pattern": "-yyyy-MM-dd", "category": "trace"},
+        {"type": "file", "filename": "error.log", "maxLogSize": 1024000, "backups": 10, "category": "error"}
+    ],
+    "replaceConsole": true
+}

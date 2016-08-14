@@ -17,8 +17,8 @@ slogger.init({
     errorLogger:log4js.getLogger('error')
 });
 
-slogger.debug('debug');
-slogger.trace('trace');
-slogger.warn('warn');
-slogger.error('error');
+slogger.debug('debug');//use debugLogger to call debug
+slogger.trace('trace');//use traceLogger to call trace
+slogger.warn('warn');//use errorLogger to call warn
+slogger.error('error');//use errorLogger to call error
 ```

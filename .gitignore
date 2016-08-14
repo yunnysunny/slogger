@@ -1,4 +1,4 @@
 node_modules/
 *.iml
 .idea/
-*.log
+*.log*

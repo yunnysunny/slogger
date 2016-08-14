@@ -17,16 +17,26 @@ var slogger = {
         return this;
     },
     debug : function() {
-        debugLogger.debug.apply(debugLogger,arguments);
+        if (debugLogger) {
+            debugLogger.debug.apply(debugLogger,arguments);
+        }
     },
     trace : function() {
-        traceLogger.trace.apply(traceLogger,arguments);
+        if (traceLogger) {
+            traceLogger.trace.apply(traceLogger,arguments);
+        }        
     },
     warn : function() {
-        errorLogger.warn.apply(errorLogger,arguments);
+        if (errorLogger) {
+            errorLogger.warn.apply(errorLogger,arguments);
+        }
+        
     },
     error : function() {
-        errorLogger.error.apply(errorLogger,arguments);
+        if (errorLogger) {
+            errorLogger.error.apply(errorLogger,arguments);
+        }
+        
     }
 };
 

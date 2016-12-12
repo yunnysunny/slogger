@@ -2,6 +2,7 @@ var _unshift = Array.prototype.unshift;
 var _push = Array.prototype.push;
 const MAP_LOG_LEVEL = {
     DEBUG : {color : '\x1b[32m'},
+    INFO : {color : '\x1b[32m'},
     TRACE : {color : '\x1b[34m'},
     WARN : {color : '\x1b[33m'},
     ERROR : {color : '\x1b[31m'}
@@ -34,6 +35,14 @@ var slogger = {
             debugLogger.debug.apply(debugLogger,arguments);
         } else {
             this.print(arguments, 'DEBUG');
+        }
+    },
+    info : function() {
+        var debugLogger = this.debugLogger;
+        if (debugLogger) {
+            debugLogger.debug.apply(debugLogger,arguments);
+        } else {
+            this.print(arguments, 'INFO');
         }
     },
     trace : function() {

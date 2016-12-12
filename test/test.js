@@ -10,7 +10,12 @@ slogger.init({
     errorLogger:log4js.getLogger('error')
 });
 
-slogger.debug('debug');
+slogger.debug('debug',{a:1,b:2});
 slogger.trace('trace');
 slogger.warn('warn');
-slogger.error('error');
+slogger.error('error',new Error('This is a test error.'));
+setTimeout(function() {
+    slogger.debug('debug2');
+    slogger.trace('trace2');
+},1000);
+

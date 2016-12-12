@@ -16,8 +16,11 @@ slogger.init({
     traceLogger:log4js.getLogger('trace'),
     errorLogger:log4js.getLogger('error')
 });
+// The function `init` can be ignored, when you do so,     
+// it will only print log to console, see the [example](https://github.com/yunnysunny/slogger/blob/master/test/test2.js).
 
 slogger.debug('debug');//use debugLogger to call debug
+slogger.info('info');//use debugLogger to call info
 slogger.trace('trace');//use traceLogger to call trace
 slogger.warn('warn');//use errorLogger to call warn
 slogger.error('error');//use errorLogger to call error

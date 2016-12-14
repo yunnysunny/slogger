@@ -13,16 +13,27 @@ var slogger = {
     /**
      * Init slogger
      * 
-     * @param {debugLogger,traceLogger,errorLogger} options
+     * @param {debugLogger,traceLogger,errorLogger,disableCustomConsole} options
      * @returns this
      */
     init:function(options) {
         this.debugLogger = options.debugLogger;
         this.traceLogger = options.traceLogger;
         this.errorLogger = options.errorLogger;
+        this.disableCustomConsole = options.disableCustomConsole || false;
         return this;
     },
     print : function(args,level) {
+        if (this.disableCustomConsole) {
+            level = (level || '').toLowerCase();
+            var _fun;
+            if (level === 'trace') {
+                _fun = console.info;
+            } else {
+                _fun  = console[level.toLowerCase()] || console.info;
+            }
+            return _fun.apply(console, args);
+        }
         level = (level || '').toUpperCase();
         var config = MAP_LOG_LEVEL[level] || {color : ''};
         _unshift.call(args, config.color + new Date().toString() + ' ['+level+']');

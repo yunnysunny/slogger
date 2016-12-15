@@ -32,7 +32,7 @@ slogger.error('error');//use errorLogger to call error
 
 The slogger can work properly , even though you use none log libraries.
 It will print log to console with prefix of time string and log level,
-for example `slogger.debug('debug')` will print `Wed Dec 14 2016 22:31:11 GMT+0800 (中国标准时间) [DEBUG]` .
+for example `slogger.debug('debug')` will print `Thu Dec 15 2016 11:04:50 GMT+0800 (CST) [DEBUG] debug` .
 
 ```javascript
 var slogger = require('../index');

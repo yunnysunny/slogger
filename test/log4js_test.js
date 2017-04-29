@@ -6,12 +6,13 @@ log4js.configure(log4jsConfig);
 
 slogger.init({
     debugLogger:log4js.getLogger('debug'),
-    traceLogger:log4js.getLogger('trace'),
-    errorLogger:log4js.getLogger('error')
+    //traceLogger:log4js.getLogger('trace'),
+    errorLogger:log4js.getLogger('error'),
+    disableCustomConsole:true
 });
 
 slogger.debug('debug',{a:1,b:2});
-slogger.trace('trace');
+slogger.trace('This is a trace');
 slogger.warn('warn');
 slogger.error('error',new Error('This is a test error.'));
 setTimeout(function() {

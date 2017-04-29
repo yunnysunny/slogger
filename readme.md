@@ -1,5 +1,6 @@
 # node-slogger
-A wrapper of logger package , which can write same code even if you change you logger api.
+[![NPM](https://nodei.co/npm/node-slogger.png?downloads=true)](https://nodei.co/npm/node-slogger/)  
+A wrapper of logger package , which can write same code even if you change you logger library.
 
 ## Install
 ```npm install node-slogger```
@@ -46,7 +47,7 @@ slogger.info('info');//use debugLogger to call info
 slogger.trace('trace');//use traceLogger to call trace
 slogger.warn('warn');//use errorLogger to call warn
 slogger.error('error');//use errorLogger to call error
-```  
+```
 **The code of log4js_test.js**
 
 ```json
@@ -59,7 +60,7 @@ slogger.error('error');//use errorLogger to call error
     ],
     "replaceConsole": true
 }
-```  
+```
 **The code of log4js.son**
 
 ### Printing log to console with third log libraries
@@ -76,7 +77,22 @@ slogger.debug('debug',{a:1,b:2});
 slogger.trace('This is a trace');
 slogger.warn('This is a warn');
 slogger.error('This is a error');
-```  
+```
 **The code of winston_test.js**
 
 We set `logProvider`'s value to `winston`, you can also set it to `log4js` if you like. 
+
+### Setting the log level
+You can set the level of log , just use the option of `level`. For example we set it to `warn`:
+
+```javascript
+var slogger = require('../index').init({level:'warn'});
+
+slogger.debug('debug');
+slogger.info('info');
+slogger.trace('trace');
+slogger.warn('warn');
+slogger.error('error');
+```
+**The code of level_test.js**  
+Only the `warn` adn `error` log will be printed as we set the `level` option to `warn`.

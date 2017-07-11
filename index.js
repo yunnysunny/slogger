@@ -1,14 +1,15 @@
 var provideFactory = require('./lib/provider_factory');
 var config = require('./lib/config');
+const TIME_LEVEL_VALUE = config.TIME_LEVEL_VALUE;
 const TRACE_LEVEL_VALUE = config.TRACE_LEVEL_VALUE;
 const DEBUG_LEVEL_VALUE = config.DEBUG_LEVEL_VALUE;
 const INFO_LEVEL_VALUE = config.INFO_LEVEL_VALUE;
 const WARN_LEVEL_VALUE = config.WARN_LEVEL_VALUE;
 const ERROR_LEVEL_VALUE = config.ERROR_LEVEL_VALUE;
-const MAP_LOG_LEVEL = config.MAP_LOG_LEVEL;
+const LOG_LEVEL_MAP = config.LOG_LEVEL_MAP;
 
 var slogger = {
-
+    config : config,
     /**
      * Init slogger
      * 
@@ -23,11 +24,11 @@ var slogger = {
         this.disableCustomConsole = options.disableCustomConsole || false;
 
         var logProvider = options.logProvider || 'console';
-        var levelDescription = options.level || 'trace';
-        var levelOjb = MAP_LOG_LEVEL[levelDescription];
+        var levelDescription = options.level || 'time';
+        var levelOjb = LOG_LEVEL_MAP[levelDescription];
         if (!levelOjb || isNaN(levelOjb.value)) {
-            this.level = TRACE_LEVEL_VALUE;
-            levelDescription = 'trace';
+            this.level = TIME_LEVEL_VALUE;
+            levelDescription = 'time';
         } else {
             this.level = levelOjb.value;
         }
@@ -102,7 +103,21 @@ var slogger = {
             this.print(arguments, 'ERROR');
         }
         
+    },
+    time : function(label) {
+        if (this.level < TIME_LEVEL_VALUE) {
+            return;
+        }
+        console.time(label);
+    },
+    timeEnd : function(label) {
+        if (this.level < TIME_LEVEL_VALUE) {
+            return;
+        }
+        console.timeEnd(label);
     }
 };
+
+
 
 module.exports = slogger;

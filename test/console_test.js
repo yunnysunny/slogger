@@ -96,24 +96,29 @@ afterEach(function() {
 
 
 describe('console',function() {
-    describe('test with time',function() {
+    describe('test with time#',function() {
         showLog();
     });
     
-    describe('test without time',function() {
+    describe('test without time#',function() {
         it('to remove time prefix',function() {
             slogger = slogger.init({disableCustomConsole:true});
         });
+        it('clear object cache',function(done) {
+            setTimeout(function(){
+                done();
+            },500);
+        });
         showLog(true);
     });
-    describe('after set log level to warn',function() {
+    describe('after set log level to warn#',function() {
         it('should set log level warn success',function() {
             slogger = slogger.init({level:'warn'});
         });
         showLog(false,'warn');
     });
 
-    describe('do time calculate',function() {
+    describe('do time calculate#',function() {
         it('should not show time when level not match',function() {
             var spy =  sinon.spy(console, 'time');
             slogger.time('heavyWork');

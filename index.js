@@ -43,7 +43,12 @@ var slogger = {
         }
         level = (level || 'info').toLowerCase();
         if (this.logProviderInstance) {
-            return this.logProviderInstance.print(args,level);
+            const len = args.length;
+            const argsArray = new Array(len);
+            for (var i=0;i<len;i++) {
+                argsArray[i] = args[i];
+            }
+            return this.logProviderInstance.print(argsArray,level);
         }
         
     },

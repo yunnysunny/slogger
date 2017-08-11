@@ -20,7 +20,11 @@
   },
   "homepage": "https://github.com/yunnysunny/slogger",
   "devDependencies": {
+    "benchmark": "^2.1.4",
+    "chai": "^4.1.1",
     "log4js": "^1.1.1",
+    "mocha": "^3.5.0",
+    "sinon": "^3.2.0",
     "winston": "^2.3.1"
   }
 }

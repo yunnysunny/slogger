@@ -14,7 +14,7 @@ slogger.init({
 slogger.debug('debug',{a:1,b:2});
 slogger.trace('This is a trace');
 slogger.warn('warn');
-slogger.error('error',new Error('This is a test error.'));
+//slogger.error('error',new Error('This is a test error.'));
 setTimeout(function() {
     slogger.debug('debug2');
     slogger.trace('trace2');

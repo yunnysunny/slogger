@@ -24,7 +24,7 @@ slogger.error('error');
 ```
 
 But if you want print without the prefix, you can pass paramater `disableCustomConsole` to `init`,
-and set its value `true`, see the [example](https://github.com/yunnysunny/slogger/blob/master/test/console_test2.js).
+and set its value `true`.
 
 ### Saving log to file
 And then we choose [log4js](https://www.npmjs.com/package/log4js) to save our logs to files.

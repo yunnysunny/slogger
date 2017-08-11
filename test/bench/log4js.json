@@ -1,9 +1,0 @@
-{
-    "appenders": [
-        {"type": "console"},
-        {"type": "file", "filename": "debug.log",  "category": "debug"}, 
-        {"type": "file", "filename": "trace.log", "category": "trace"},
-        {"type": "file", "filename": "error.log",  "category": "error"}
-    ],
-    "replaceConsole": true
-}

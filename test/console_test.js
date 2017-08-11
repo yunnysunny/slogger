@@ -3,15 +3,21 @@ const assert = require('assert');
 var slogger = require('../index');
 var config = require('../lib/config');
 var spyMap = {
+    debug:null,
     info : null,
     warn : null,
     error:null
 };
 
+const supportDebugFun = process.version >= 'v8.0';
+
 function getSpy(printLevel,disableCustomConsole) {
     if (disableCustomConsole) {//call console origin function
        switch(printLevel) {
             case 'debug':
+            return supportDebugFun?
+            spyMap.debug
+            : spyMap.info;
             case 'info':
             case 'trace':
             return spyMap.info;
@@ -73,11 +79,18 @@ function doHeavyWork() {
 }
 
 beforeEach(function() {
+    if (supportDebugFun) {
+        spyMap.debug = sinon.spy(console,'debug');
+    }
+    
     spyMap.info = sinon.spy(console, 'info');
     spyMap.warn = sinon.spy(console,'warn');
     spyMap.error = sinon.spy(console,'error');
 });
 afterEach(function() {
+    if (supportDebugFun && spyMap.debug) {
+        spyMap.debug.restore();
+    }
     if (spyMap.info) {
         spyMap.info.restore();
     }
@@ -98,11 +111,6 @@ describe('console',function() {
     describe('test without time#',function() {
         before('to remove time prefix',function() {
             slogger = slogger.init({disableCustomConsole:true});
-        });
-        it('clear object cache',function(done) {
-            setTimeout(function(){
-                done();
-            },500);
         });
         showLog(true);
     });

@@ -96,7 +96,7 @@ describe('console',function() {
     });
     
     describe('test without time#',function() {
-        it('to remove time prefix',function() {
+        before('to remove time prefix',function() {
             slogger = slogger.init({disableCustomConsole:true});
         });
         it('clear object cache',function(done) {
@@ -107,7 +107,7 @@ describe('console',function() {
         showLog(true);
     });
     describe('after set log level to warn#',function() {
-        it('should set log level warn success',function() {
+        before('should set log level warn success',function() {
             slogger = slogger.init({level:'warn'});
         });
         showLog(false,'warn');

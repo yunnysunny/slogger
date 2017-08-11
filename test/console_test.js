@@ -15,13 +15,10 @@ function getSpy(printLevel,disableCustomConsole) {
             case 'info':
             case 'trace':
             return spyMap.info;
-            break;
             case 'warn':
             return spyMap.warn;
-            break;
             case 'error':
             return spyMap.error;
-            break;
         }
     }
     
@@ -74,9 +71,7 @@ function doHeavyWork() {
         
     }
 }
-function doTimeTest() {
-    
-}
+
 beforeEach(function() {
     spyMap.info = sinon.spy(console, 'info');
     spyMap.warn = sinon.spy(console,'warn');

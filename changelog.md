@@ -1,3 +1,5 @@
+- 0.3.0
+    1. Improve the performance of the `print` function.
 - 0.2.0 
     1. Add `time` `timeEnd` function and the const of `TIME_LEVEL_VALUE`, which is the default level of slogger.
 - 0.1.0

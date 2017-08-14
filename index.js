@@ -7,13 +7,24 @@ const INFO_LEVEL_VALUE = config.INFO_LEVEL_VALUE;
 const WARN_LEVEL_VALUE = config.WARN_LEVEL_VALUE;
 const ERROR_LEVEL_VALUE = config.ERROR_LEVEL_VALUE;
 const LOG_LEVEL_MAP = config.LOG_LEVEL_MAP;
-
+/**
+ * The slogger object.
+ */
 var slogger = {
     config : config,
     /**
      * Init slogger
      * 
-     * @param {debugLogger,traceLogger,errorLogger,disableCustomConsole} options
+     * @param {Object=} options
+     * @param {Object=} options.debugLogger The debug logger, if empty, it will use console.
+     * @param {Object=} options.traceLogger The trace logger, if empty, it will use console.
+     * @param {Object=} options.warnLogger The warn logger, if empty, it will use console.
+     * @param {Object=} options.errorLogger The error logger, if empty, it will use console.
+     * @param {Boolean=} options.disableCustomConsole Whether disable custom console format, if you use third party logger , the param will been ignored.
+     * @param {String=} options.logProvider The console logger provider, it can be `log4js` `winston` or `console`, the default value is `console`.
+     * @param {String=} otpions.level The level of logger, it can be `time` `trace` `debug` `warn`  `error`,the default is `time`.
+     * @param {Boolean=} options.disableTimePrefix Whether disable the time perfix, it only takes effect when you use custom console format.
+     * @param {Number=} options.flushInterval  Print the log to console in a fixed time, all logs between the interval will be cached, and then flush to console when the internal timer trigger.it only takes effect when you use custom console format.
      * @returns this
      */
     init:function(options) {

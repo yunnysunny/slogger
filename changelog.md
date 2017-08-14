@@ -1,3 +1,5 @@
+- 0.4.0
+    1. Add delay console feature.
 - 0.3.0
     1. Improve the performance of the `print` function.
 - 0.2.0 

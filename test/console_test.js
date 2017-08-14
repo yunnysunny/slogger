@@ -31,9 +31,9 @@ function getSpy(printLevel,disableCustomConsole) {
     return spyMap.info;//use console.info to simulate
 }
 
-function logWithConsoleInfo(printLevel,disableCustomConsole,levelCanPrint) {
+function logWithConsoleInfo(printLevel,disableTime,levelCanPrint) {
    
-    var spy = getSpy(printLevel,disableCustomConsole);
+    var spy = getSpy(printLevel,disableTime);
 
     slogger[printLevel](printLevel);
     
@@ -42,7 +42,7 @@ function logWithConsoleInfo(printLevel,disableCustomConsole,levelCanPrint) {
     // assert that it was called with the correct value
     if (levelWannaPrint <= levelLimit) {
         assert(spy.called);
-        if (disableCustomConsole) {
+        if (disableTime) {
             assert(spy.calledWith(printLevel));
         } else {
             assert(spy.args[0][0].indexOf(' GMT') !== -1);
@@ -51,25 +51,25 @@ function logWithConsoleInfo(printLevel,disableCustomConsole,levelCanPrint) {
         assert(spy.notCalled);
     }   
 }
-function showLog(disableCustomConsole,levelCanPrint) {
-    disableCustomConsole = disableCustomConsole || false;
+function showLog(disableTime,levelCanPrint) {
+    disableTime = disableTime || false;
     levelCanPrint = levelCanPrint || 'time';
     
 
     it('debug log',function() {
-        logWithConsoleInfo('debug',disableCustomConsole,levelCanPrint);
+        logWithConsoleInfo('debug',disableTime,levelCanPrint);
     });
     it('trace log',function() {
-        logWithConsoleInfo('trace',disableCustomConsole,levelCanPrint);
+        logWithConsoleInfo('trace',disableTime,levelCanPrint);
     });
     it('info log',function() {
-        logWithConsoleInfo('info',disableCustomConsole,levelCanPrint);
+        logWithConsoleInfo('info',disableTime,levelCanPrint);
     });
     it('warn log',function() {
-        logWithConsoleInfo('warn',disableCustomConsole,levelCanPrint);
+        logWithConsoleInfo('warn',disableTime,levelCanPrint);
     });
     it('error log',function() {
-        logWithConsoleInfo('error',disableCustomConsole,levelCanPrint);
+        logWithConsoleInfo('error',disableTime,levelCanPrint);
     });
 }
 function doHeavyWork() {
@@ -120,10 +120,32 @@ describe('console',function() {
         });
         showLog(false,'warn');
     });
+    describe('console with custom format, but disable the time prefix',function() {
+        before('init',function() {
+            slogger = slogger.init({disableTime:true});
+        });
+        showLog(false);
+    });
+    describe('print to console delay in fixed interval',function() {
+        it('not print right now, but after a fixed time',function(done) {
+            var spy =  spyMap.info;
+            var interval = 500;
+            slogger = slogger.init({flushInterval:interval});
+            slogger.debug('delay print');
+            assert(spy.notCalled);
+            setTimeout(function() {
+                assert(spy.called);
+                //spy.restore();
+                done();
+            },interval*2);//make sure the internal timer triggered
+            
+        });
+    });
 
     describe('do time calculate#',function() {
         it('should not show time when level not match',function() {
             var spy =  sinon.spy(console, 'time');
+            slogger = slogger.init({level:'debug'});
             slogger.time('heavyWork');
             doHeavyWork();
             slogger.timeEnd('heavyWork');
@@ -131,7 +153,7 @@ describe('console',function() {
             spy.restore();
         });
         it('should show time result',function() {
-            slogger.level = slogger.config.TIME_LEVEL_VALUE;
+            slogger = slogger.init();
             var spy =  sinon.spy(console, 'time');
             slogger.time('heavyWork');
             doHeavyWork();

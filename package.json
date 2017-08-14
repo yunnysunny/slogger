@@ -1,13 +1,14 @@
 {
   "name": "node-slogger",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A wrapper of logger libraries",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/",
     "bump_path": "npm version patch -m \"upgrade to %s\"",
     "bump_minor": "npm version minor -m \"upgrade to %s\"",
-    "upcode": "git pull origin master && git push origin master"
+    "upcode": "git pull origin master && git push origin master",
+    "doc": "jsdoc2md index.js > doc/api.md"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "chai": "^4.1.1",
+    "jsdoc-to-markdown": "^3.0.0",
     "log4js": "^1.1.1",
     "mocha": "^3.5.0",
     "sinon": "^3.2.0",

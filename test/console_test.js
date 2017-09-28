@@ -45,7 +45,9 @@ function logWithConsoleInfo(printLevel,disableTime,levelCanPrint) {
         if (disableTime) {
             assert(spy.calledWith(printLevel));
         } else {
-            assert(spy.args[0][0].indexOf(' GMT') !== -1);
+            const date = new Date();
+            const perfix = [date.getFullYear(),(date.getMonth()+1),date.getDate()].join('-');
+            assert(spy.args[0][0].indexOf(perfix) !== -1);
         }
     } else {
         assert(spy.notCalled);
@@ -103,8 +105,8 @@ afterEach(function() {
 });
 
 
-describe('console',function() {
-    describe('test with time#',function() {
+describe('console:',function() {
+    describe('test with time #',function() {
         showLog();
     });
     

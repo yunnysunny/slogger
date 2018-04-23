@@ -1,3 +1,7 @@
+- 0.5.1
+
+    1. Fix the issue of breaking down when you lack log4js or winston even if you not need it.
+
 - 0.5.0
 
     1. Fix the bug of memory leak.

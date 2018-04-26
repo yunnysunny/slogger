@@ -2,6 +2,7 @@ var slogger = require('../../index');
 slogger.init({flushInterval:50});
 const begin = Date.now();
 const MAX_AGE = 60 * 1000 * 15;
+const WRITE_INTERVAL = 10;
 let isEnd = false;
 function show() {
     if (Date.now() - begin > MAX_AGE) {
@@ -19,7 +20,7 @@ function show() {
     
     setTimeout(function() {
         show();
-    },1000);
+    },WRITE_INTERVAL);
 }
 
 show();

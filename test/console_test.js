@@ -30,7 +30,7 @@ describe('console:',function() {
 
     describe('print to console delay in fixed interval',function() {
         it('not print right now, but after a fixed time',function(done) {
-            var spy =  spyMap.info;
+            var spy =  sinon.spy(process.stdout, 'write');;
             var interval = 500;
             slogger = slogger.init({flushInterval:interval});
             slogger.debug('delay print');

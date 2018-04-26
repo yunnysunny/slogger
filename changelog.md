@@ -1,3 +1,7 @@
+- 0.5.2
+
+    1. Finally resolved the issue of memory leak cased by `console.log`, also see the issue [#1741](https://github.com/nodejs/node/issues/1741) of node.
+    
 - 0.5.1
 
     1. Fix the issue of breaking down when you lack log4js or winston even if you not need it.

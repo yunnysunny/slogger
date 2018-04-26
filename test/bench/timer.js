@@ -1,7 +1,7 @@
 var slogger = require('../../index');
-slogger.init({flushInterval:500});
+slogger.init({flushInterval:50});
 const begin = Date.now();
-const MAX_AGE = 60 * 1000 * 5;
+const MAX_AGE = 60 * 1000 * 15;
 let isEnd = false;
 function show() {
     if (Date.now() - begin > MAX_AGE) {

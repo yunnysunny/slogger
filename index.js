@@ -43,9 +43,9 @@ var slogger = {
         } else {
             this.level = levelOjb.value;
         }
-        this.logProviderInstance = provideFactory.getIntance(logProvider,levelDescription,options);
+        this.logProviderInstance = provideFactory.getIntance(logProvider,levelDescription,options);console.log('init');
         this._init = true;
-
+        process.stdout.write('is tty:'+process.stdout.isTTY);
         return this;
     },
     print : function(args,level) {

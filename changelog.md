@@ -1,3 +1,7 @@
+- 0.5.3
+
+    1. Discard the call of `toUpperCase`.
+
 - 0.5.2
 
     1. Finally resolved the issue of memory leak cased by `console.log`, also see the issue [#1741](https://github.com/nodejs/node/issues/1741) of node.

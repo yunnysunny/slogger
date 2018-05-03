@@ -45,7 +45,7 @@ var slogger = {
         }
         this.logProviderInstance = provideFactory.getIntance(logProvider,levelDescription,options);
         this._init = true;
-        process.stderr.write(new Date().toLocaleString() + ' - init slogger,is tty:'+process.stdout.isTTY);
+        // process.stderr.write(new Date().toLocaleString() + ' - init slogger,is tty:'+process.stdout.isTTY);
         return this;
     },
     print : function(args,level) {

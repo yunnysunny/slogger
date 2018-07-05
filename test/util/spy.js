@@ -2,39 +2,35 @@ const sinon  = require('sinon');
 const assert = require('assert');
 var slogger = require('../../index');
 var config = require('../../lib/config');
+const stdout = process.stdout;
 
-var spyMap = exports.spyMap = {
-    debug:null,
-    info : null,
-    warn : null,
-    error:null
-};
+var spyStdout = exports.spyStdout = null;
 
-const supportDebugFun = process.version >= 'v8.0';
+// const supportDebugFun = process.version >= 'v8.0';
 
-function getSpy(printLevel,disableCustomConsole) {
-    if (disableCustomConsole) {//call console origin function
-       switch(printLevel) {
-            case 'debug':
-            return supportDebugFun?
-            spyMap.debug
-            : spyMap.info;
-            case 'info':
-            case 'trace':
-            return spyMap.info;
-            case 'warn':
-            return spyMap.warn;
-            case 'error':
-            return spyMap.error;
-        }
-    }
+// function getSpy(printLevel,disableCustomConsole) {
+//     if (disableCustomConsole) {//call console origin function
+//        switch(printLevel) {
+//             case 'debug':
+//             return supportDebugFun?
+//             spyStdout.debug
+//             : spyStdout.info;
+//             case 'info':
+//             case 'trace':
+//             return spyStdout.info;
+//             case 'warn':
+//             return spyStdout.warn;
+//             case 'error':
+//             return spyStdout.error;
+//         }
+//     }
     
-    return spyMap.info;//use console.info to simulate
-}
+//     return spyStdout.info;//use console.info to simulate
+// }
 
 function logWithConsoleInfo(printLevel,disableTime,levelCanPrint) {
    
-    var spy = getSpy(printLevel,disableTime);
+    // var stdout = getSpy(printLevel,disableTime);
 
     slogger[printLevel](printLevel);
     
@@ -42,18 +38,20 @@ function logWithConsoleInfo(printLevel,disableTime,levelCanPrint) {
     var levelWannaPrint = config.LOG_LEVEL_MAP[printLevel].value;
     // assert that it was called with the correct value
     if (levelWannaPrint <= levelLimit) {
-        assert(spy.called);
+        assert(spyStdout.called);
+        const date = new Date();
+        const perfix = [date.getFullYear(),(date.getMonth()+1),date.getDate()].join('-');
         if (disableTime) {
-            assert(spy.calledWith(printLevel));
+            assert(spyStdout.args[0][0].indexOf(perfix) === -1);
         } else {
-            const date = new Date();
-            const perfix = [date.getFullYear(),(date.getMonth()+1),date.getDate()].join('-');
-            assert(spy.args[0][0].indexOf(perfix) !== -1);
+            assert(spyStdout.args[0][0].indexOf(perfix) !== -1);
         }
     } else {
-        assert(spy.notCalled);
+        assert(spyStdout.notCalled);
     }   
 }
+exports.logWithConsoleInfo = logWithConsoleInfo;
+
 function showLog(disableTime,levelCanPrint) {
     disableTime = disableTime || false;
     levelCanPrint = levelCanPrint || 'time';
@@ -78,25 +76,12 @@ function showLog(disableTime,levelCanPrint) {
 exports.showLog = showLog;
 
 beforeEach(function() {
-    if (supportDebugFun) {
-        spyMap.debug = sinon.spy(console,'debug');
-    }
-    
-    spyMap.info = sinon.spy(console, 'info');
-    spyMap.warn = sinon.spy(console,'warn');
-    spyMap.error = sinon.spy(console,'error');
+    spyStdout = exports.spyStdout = sinon.spy(stdout,'write');
 });
 afterEach(function() {
-    if (supportDebugFun && spyMap.debug) {
-        spyMap.debug.restore();
-    }
-    if (spyMap.info) {
-        spyMap.info.restore();
-    }
-    if (spyMap.warn) {
-        spyMap.warn.restore();
-    }
-    if (spyMap.error) {
-        spyMap.error.restore();
+    if (spyStdout) {
+        spyStdout.restore();
+        spyStdout = null;
+        exports.spyStdout = null;
     }
 });

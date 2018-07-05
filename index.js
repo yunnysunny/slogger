@@ -1,4 +1,4 @@
-var provideFactory = require('./lib/provider_factory');
+var LogPrinter = require('./lib/LogPrinter');
 var config = require('./lib/config');
 const TIME_LEVEL_VALUE = config.TIME_LEVEL_VALUE;
 const TRACE_LEVEL_VALUE = config.TRACE_LEVEL_VALUE;
@@ -16,25 +16,15 @@ var slogger = {
      * Init slogger
      * 
      * @param {Object=} options
-     * @param {Object=} options.debugLogger The debug logger, if empty, it will use console.
-     * @param {Object=} options.traceLogger The trace logger, if empty, it will use console.
-     * @param {Object=} options.warnLogger The warn logger, if empty, it will use console.
-     * @param {Object=} options.errorLogger The error logger, if empty, it will use console.
-     * @param {Boolean=} options.disableCustomConsole Whether disable custom console format, if you use third party logger , the param will been ignored.
-     * @param {String=} options.logProvider The console logger provider, it can be `log4js` `winston` or `console`, the default value is `console`.
-     * @param {String=} otpions.level The level of logger, it can be `time` `trace` `debug` `warn`  `error`,the default is `time`.
-     * @param {Boolean=} options.disableTimePrefix Whether disable the time perfix, it only takes effect when you use custom console format.
-     * @param {Number=} options.flushInterval  Print the log to console in a fixed time, all logs between the interval will be cached, and then flush to console when the internal timer trigger.it only takes effect when you use custom console format.
+     * @param {String=} [time] otpions.level The level of logger, it can be `time` `trace` `debug` `warn`  `error`,the default is `time`.
+     * @param {Number=} [0] options.flushInterval  Print the log to console in a fixed time, all logs between the interval will be cached, and then flush to console when the internal timer trigger.it only takes effect when you use custom console format.
+     * @param {LogFileItem[]} [undefined] options.logFiles The files to storage the log.
+     * @param {Boolean} [false] options.disableTimePrefix Whether disable the time perfix.
      * @returns this
      */
     init:function(options) {
         options = options || {};
-        this.debugLogger = options.debugLogger;
-        this.traceLogger = options.traceLogger;
-        this.errorLogger = options.errorLogger;
-        this.disableCustomConsole = options.disableCustomConsole || false;
 
-        var logProvider = options.logProvider || 'console';
         var levelDescription = options.level || 'time';
         var levelOjb = LOG_LEVEL_MAP[levelDescription];
         if (!levelOjb || isNaN(levelOjb.value)) {
@@ -43,7 +33,7 @@ var slogger = {
         } else {
             this.level = levelOjb.value;
         }
-        this.logProviderInstance = provideFactory.getIntance(logProvider,levelDescription,options);
+        this._printer = new LogPrinter(options);
         this._init = true;
         // process.stderr.write(new Date().toLocaleString() + ' - init slogger,is tty:'+process.stdout.isTTY);
         return this;
@@ -52,73 +42,50 @@ var slogger = {
         if (!this._init) {
             this.init();
         }
-        level = (level || 'info').toLowerCase();
-        if (this.logProviderInstance) {
-            const len = args.length;
-            const argsArray = new Array(len);
-            for (var i=0;i<len;i++) {
-                argsArray[i] = args[i];
-            }
-            return this.logProviderInstance.print(argsArray,level);
+        if (Array.isArray(args)) {
+            return this._printer.print(args,level);
         }
-        
+        const len = args.length;
+        const argsArray = new Array(len);
+        for (var i=0;i<len;i++) {
+            argsArray[i] = args[i];
+        }
+        return this._printer.print(argsArray,level);
     },
     debug : function() {
         if (this.level < DEBUG_LEVEL_VALUE) {
             return;
         }
-        var debugLogger = this.debugLogger;
-        if (debugLogger) {
-            debugLogger.debug.apply(debugLogger,arguments);
-        } else {
-            this.print(arguments, 'DEBUG');
-        }
+
+        this.print(arguments, 'debug');
     },
     info : function() {
         if (this.level < INFO_LEVEL_VALUE) {
             return;
         }
-        var debugLogger = this.debugLogger;
-        if (debugLogger) {
-            debugLogger.debug.apply(debugLogger,arguments);
-        } else {
-            this.print(arguments, 'INFO');
-        }
+        
+        this.print(arguments, 'info');
     },
     trace : function() {
         if (this.level < TRACE_LEVEL_VALUE) {
             return;
         }
-        var traceLogger = this.traceLogger;
-        if (traceLogger) {
-            traceLogger.trace.apply(traceLogger,arguments);
-        } else {
-            this.print(arguments, 'TRACE');
-        }       
+        
+        this.print(arguments, 'trace');
     },
     warn : function() {
         if (this.level < WARN_LEVEL_VALUE) {
             return;
         }
-        var errorLogger = this.errorLogger;
-        if (errorLogger) {
-            errorLogger.warn.apply(errorLogger,arguments);
-        } else {
-            this.print(arguments, 'WARN');
-        }
         
+        this.print(arguments, 'warn');
     },
     error : function() {
         if (this.level < ERROR_LEVEL_VALUE) {
             return;
         }
-        var errorLogger = this.errorLogger;
-        if (errorLogger) {
-            errorLogger.error.apply(errorLogger,arguments);
-        } else {
-            this.print(arguments, 'ERROR');
-        }
         
+        this.print(arguments, 'error');
     },
     time : function(label) {
         if (this.level < TIME_LEVEL_VALUE) {

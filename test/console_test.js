@@ -1,8 +1,9 @@
 const sinon  = require('sinon');
 const assert = require('assert');
 var slogger = require('../index');
-var showLog = require('./util/spy').showLog;
-var spyMap = require('./util/spy').spyMap;
+var spyUtil = require('./util/spy');
+var showLog = spyUtil.showLog;
+// var spyStdout = require('./util/spy').spyStdout;
 
 function doHeavyWork() {
     for (var i=0;i<20000000;i++) {
@@ -15,12 +16,6 @@ describe('console:',function() {
         showLog();
     });
     
-    describe('test without time#',function() {
-        before('to remove time prefix',function() {
-            slogger = slogger.init({disableCustomConsole:true});
-        });
-        showLog(true);
-    });
     describe('after set log level to warn#',function() {
         before('should set log level warn success',function() {
             slogger = slogger.init({level:'warn'});
@@ -30,7 +25,7 @@ describe('console:',function() {
 
     describe('print to console delay in fixed interval',function() {
         it('not print right now, but after a fixed time',function(done) {
-            var spy =  sinon.spy(process.stdout, 'write');;
+            var spy =  spyUtil.spyStdout;
             var interval = 500;
             slogger = slogger.init({flushInterval:interval});
             slogger.debug('delay print');

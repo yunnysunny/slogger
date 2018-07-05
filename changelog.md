@@ -1,3 +1,9 @@
+- 1.0.0
+
+    1. Discard the support of third-part log library.
+    2. Add the function of saving log to files.
+    3. Remove some unused function.
+
 - 0.5.3
 
     1. Discard the call of `toUpperCase`.

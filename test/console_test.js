@@ -13,12 +13,15 @@ function doHeavyWork() {
 
 describe('console:',function() {
     describe('test with time #',function() {
+        before('before basic test',function() {
+            slogger = slogger.init({level:'trace',flushInterval:0});
+        });
         showLog();
     });
     
     describe('after set log level to warn#',function() {
         before('should set log level warn success',function() {
-            slogger = slogger.init({level:'warn'});
+            slogger = slogger.init({level:'warn',flushInterval:0});
         });
         showLog(false,'warn');
     });

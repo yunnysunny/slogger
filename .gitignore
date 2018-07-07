@@ -3,4 +3,5 @@ node_modules/
 .idea/
 .history/
 .vscode/
+.nyc_output/
 *.log*

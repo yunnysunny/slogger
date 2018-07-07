@@ -1,3 +1,7 @@
+- 1.0.1
+
+    1. Fixed the problem of not supporting the node of v0.x
+
 - 1.0.0
 
     1. Discard the support of third-part log library.

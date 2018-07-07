@@ -1,6 +1,6 @@
 {
   "name": "node-slogger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A wrapper of logger to let you print log easily.",
   "main": "index.js",
   "scripts": {

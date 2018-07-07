@@ -16,10 +16,10 @@ var slogger = {
      * Init slogger
      * 
      * @param {Object=} options
-     * @param {String=} [time] otpions.level The level of logger, it can be `time` `trace` `debug` `warn`  `error`,the default is `time`.
-     * @param {Number=} [0] options.flushInterval  Print the log to console in a fixed time, all logs between the interval will be cached, and then flush to console when the internal timer trigger.it only takes effect when you use custom console format.
-     * @param {LogFileItem[]} [undefined] options.logFiles The files to storage the log.
-     * @param {Boolean} [false] options.disableTimePrefix Whether disable the time perfix.
+     * @param {String=}  [otpions.level=time]  The level of logger, it can be `time` `trace` `debug` `warn`  `error`,the default is `time`.
+     * @param {Number=}  [options.flushInterval=0]  Print the log to console in a fixed time, all logs between the interval will be cached, and then flush to console when the internal timer trigger.it only takes effect when you use custom console format.
+     * @param {LogFileItem[]}  [options.logFiles=undefined] The files to storage the log.
+     * @param {Boolean} [options.disableTimePrefix=false] Whether disable the time perfix.
      * @returns this
      */
     init:function(options) {

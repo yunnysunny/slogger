@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:yunnysunny/slogger.git"
+    "url": "https://github.com/yunnysunny/slogger.git"
   },
   "keywords": [
     "logger"

@@ -89,7 +89,8 @@ See the document of [api](doc/api.md).
 
 ## Known issues
 
-1. Not showing log on VS Code's debug pannel
+### 1. Not showing log on VS Code's debug pannel
+
 You should modify the `launch.json` and add the parameter `console` with the value `integratedTerminal`. This is an example:
 
 ```json

@@ -87,6 +87,30 @@ Only the `warn` adn `error` log will be printed as we set the `level` option to 
 ## API
 See the document of [api](doc/api.md).
 
+## Known issues
+
+1. Not showing log on VS Code's debug pannel
+You should modify the `launch.json` and add the parameter `console` with the value `integratedTerminal`. This is an example:
+
+```json
+{
+    "type": "node",
+    "request": "launch",
+    "name": "Mocha Tests",
+    "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+    "args": [
+        "-u",
+        "tdd",
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}/src/test/mocha"
+    ],
+    "console": "integratedTerminal",
+    "internalConsoleOptions": "openOnSessionStart"
+},
+```
+
 ## License
 
 [MIT](LICENSE)

@@ -1,15 +1,15 @@
 {
   "name": "node-slogger",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "A wrapper of logger to let you print log easily.",
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha test/",
-    "coverage":"nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "bump_path": "npm version patch -m \"upgrade to %s\"",
     "bump_minor": "npm version minor -m \"upgrade to %s\"",
     "upcode": "git pull origin master && git push origin master",
-    "release":"git push && release-to-github-with-changelog",
+    "release": "git push && release-to-github-with-changelog",
     "doc": "jsdoc2md index.js lib/LogPrinter.js > doc/api.md"
   },
   "repository": {
@@ -30,6 +30,7 @@
     "chai": "^4.1.1",
     "coveralls": "^3.0.2",
     "jsdoc-to-markdown": "^3.0.0",
+    "logstash-client": "^1.1.1",
     "mocha": "^3.5.0",
     "nyc": "^10.3.2",
     "sinon": "^3.2.0"

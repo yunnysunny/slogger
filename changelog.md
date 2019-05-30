@@ -1,3 +1,9 @@
+# v2.0.0
+## Breaking change
+1. Drop the support of node 4 and below.
+## Add
+1. Add the function of writting log to logstash.
+
 # v1.0.2
 ## Fix
 1. Fixed the issue of not clearing the cache used to write files.

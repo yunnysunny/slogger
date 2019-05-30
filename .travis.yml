@@ -2,8 +2,7 @@ language: node_js
 service: docker
 sudo: required
 env:
-  - LOGSTASH_HOST=localhost
-  - LOGSTASH_PORT=12000
+  - LOGSTASH_HOST=localhost LOGSTASH_PORT=12000
 before_install:
   - mkdir -p  ~/settings/
   - cp ci/logstash.conf ~/settings/

@@ -4,7 +4,7 @@ sudo: required
 env:
   - LOGSTASH_HOST=localhost LOGSTASH_PORT=12000
 before_script:
-  - docker run --rm -it -v $TRAVIS_BUILD_DIR/ci/logstash.conf:/usr/share/logstash/pipeline/logstash.conf docker.elastic.co/logstash/logstash:7.1.1
+  - docker run --rm -it -v $TRAVIS_BUILD_DIR/ci/logstash.conf:/usr/share/logstash/pipeline/logstash.conf $TRAVIS_BUILD_DIR/ci/logstash.yml:/usr/share/logstash/config/logstash.yml docker.elastic.co/logstash/logstash:7.1.1
 
 node_js:
   - "5"

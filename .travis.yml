@@ -3,10 +3,8 @@ service: docker
 sudo: required
 env:
   - LOGSTASH_HOST=localhost LOGSTASH_PORT=12000
-before_install:
-  - mkdir -p  ~/settings/
-  - cp ci/logstash.conf ~/settings/
-  - docker run --rm -it -v ~/settings/logstash.conf:/usr/share/logstash/config/ docker.elastic.co/logstash/logstash:7.1.1
+before_script:
+  - docker run --rm -it -v ci/logstash.conf:/usr/share/logstash/config/ docker.elastic.co/logstash/logstash:7.1.1
 
 node_js:
   - "5"

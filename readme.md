@@ -12,7 +12,7 @@
 [coveralls-url]: https://coveralls.io/r/yunnysunny/slogger?branch=master
 [david-image]: https://img.shields.io/david/yunnysunny/slogger.svg?style=flat-square
 [david-url]: https://david-dm.org/yunnysunny/slogger
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
+[node-image]: https://img.shields.io/badge/node.js-%3E=_6-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
 
 [![NPM](https://nodei.co/npm/node-slogger.png?downloads=true)](https://nodei.co/npm/node-slogger/)  
@@ -58,7 +58,27 @@ slogger.error('error');//print to console and write to the file
 ```
 **The code of file_test.js**
 
+### Saving log to logstash
+[Logstash](https://www.elastic.co/products/logstash) is an open source, server-side data processing pipeline. Slogger also support sending log to it. When you use the function, you have to add [logstash-client](https://www.npmjs.com/package/logstash-client) to your dependecies manual.
 
+```javascript
+const Logstash = require('logstash-client');
+const VALUE_FLUSH_INTERVAL = 100;
+
+slogger.init({
+    flushInterval:VALUE_FLUSH_INTERVAL,
+    logstashes:[{
+        category: 'warn',
+        server: new Logstash({
+            type: 'tcp',
+            host: 'locahost',// the host of your logstash server
+            port: 19001// the port of your logstash server
+
+        })
+    }]
+});
+slogger.warn('the warnning message which will be sended to logstash serveer');
+```
 ### Printing the log to console delayed with fixed interval.
 
 If you wanna you project run with high performance, printing to console frequently will cost a lot of cpu time. So slogger provide a feature of printing log in delay time with a fixed interval. 

@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Api for slogger</title>
+</head>
+<body>
+    <div id="content"></div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.timeout = 3000;
+        xhr.responseType = "text";
+        xhr.open('GET', '/api.md', true);
+
+        xhr.onload = function(e) { 
+            if(this.status == 200||this.status == 304){
+                document.getElementById('content').innerHTML =
+                marked(this.responseText);
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>

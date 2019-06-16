@@ -105,7 +105,7 @@ slogger.error('error');
 Only the `warn` adn `error` log will be printed as we set the `level` option to `warn`.
 
 ## API
-See the document of [api](doc/api.md).
+See the document of [api](docs/api.md).
 
 ## Known issues
 

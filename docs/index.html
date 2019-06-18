@@ -3,10 +3,24 @@
 <head>
     <meta charset="utf-8"/>
     <title>Api for slogger</title>
+    <style type="text/css">
+    #markdown-view dl br {
+        line-height: 0;
+        display: inline;
+        content: " ";
+    }
+    </style>
 </head>
 <body>
-    <div id="content"></div>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https:////upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.3.min.js"></script>
+    <link rel="stylesheet" href="https://silian.whyun.com/libs/editormd/1.5.0/css/editormd.preview.css" />
+    <div id="markdown-view">
+        <!-- Server-side output Markdown text -->
+        <textarea style="display:none;">### Hello world!</textarea>
+    </div>
+    <script src="https://silian.whyun.com/libs/editormd/1.5.0/editormd.js"></script>
+    <script src="https://silian.whyun.com/libs/editormd/1.5.0/lib/marked.min.js"></script>
+    <script src="https://silian.whyun.com/libs/editormd/1.5.0/lib/prettify.min.js"></script>
     <script>
         var xhr = new XMLHttpRequest();
         xhr.timeout = 3000;
@@ -14,9 +28,8 @@
         xhr.open('GET', '/api.md', true);
 
         xhr.onload = function(e) { 
-            if(this.status == 200||this.status == 304){
-                document.getElementById('content').innerHTML =
-                marked(this.responseText);
+            if(this.status == 200 || this.status == 304){
+                editormd.markdownToHTML('markdown-view',{markdown:this.responseText,htmlDecode :true});
             }
         };
         xhr.send();

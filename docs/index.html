@@ -25,7 +25,7 @@
         var xhr = new XMLHttpRequest();
         xhr.timeout = 3000;
         xhr.responseType = "text";
-        xhr.open('GET', '/api.md', true);
+        xhr.open('GET', './api.md', true);
 
         xhr.onload = function(e) { 
             if(this.status == 200 || this.status == 304){

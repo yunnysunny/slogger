@@ -1,3 +1,9 @@
+# v2.1.0
+## Add
+1. Add the support of writting log to kafka.
+## Remove
+1. Remove the function of writting log to logstash.
+
 # v2.0.0
 ## Breaking change
 1. Drop the support of node 5 and below.

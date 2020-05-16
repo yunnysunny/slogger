@@ -18,8 +18,8 @@ var slogger = {
      * @param {Object=} options
      * @param {String=}  [otpions.level=time]  The level of logger, it can be `time` `trace` `debug` `warn`  `error`,the default is `time`.
      * @param {Number=}  [options.flushInterval=0]  Print the log to console in a fixed time, all logs between the interval will be cached, and then flush to console when the internal timer trigger.it only takes effect when you use custom console format.
-     * @param {LogFileItem[]}  [options.logFiles=undefined] The files to storage the log.
-     * @param {LogstashItem[]} [options.logstashes=undefined] The logstash server config.
+     * @param {LogFileItem[]}  [options.logFiles] The files to storage the log.
+     * @param {QueueScheduleProducer[]} [options.producers] The instances of QueueScheduleProducer, which used to send log to kafka.
      * @param {Boolean} [options.disableTimePrefix=false] Whether disable the time perfix.
      * @param {String=} [options.projectName=''] The name of project which use slogger, it will be a field of data sent to logstash if you use.
      * @returns this

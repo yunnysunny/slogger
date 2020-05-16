@@ -10,7 +10,7 @@
     "bump_minor": "npm version minor -m \"upgrade to %s\"",
     "upcode": "git pull origin master && git push origin master",
     "release": "git push && release-to-github-with-changelog",
-    "doc": "jsdoc2md index.js lib/LogPrinter.js > doc/api.md"
+    "doc": "jsdoc2md index.js lib/LogPrinter.js > docs/api.md"
   },
   "repository": {
     "type": "git",

@@ -58,26 +58,37 @@ slogger.error('error');//print to console and write to the file
 ```
 **The code of file_test.js**
 
-### Saving log to logstash
-[Logstash](https://www.elastic.co/products/logstash) is an open source, server-side data processing pipeline. Slogger also support sending log to it. When you use the function, you have to add [logstash-client](https://www.npmjs.com/package/logstash-client) to your dependecies manual.
+### Saving log to kafka
+Slogger support sending log to kafka. When you use the function, you have to add [queue-schedule](https://www.npmjs.com/package/queue-schedule) and [node-rdkafka](https://www.npmjs.com/package/node-rdkafka) to your dependecies manual.
 
 ```javascript
-const Logstash = require('logstash-client');
+const Kafka = require('node-rdkafka');
+const {RdKafkaProducer} = require('queue-schedule');
+var slogger = require('node-slogger');
+// const {LOGSTASH_HOST,LOGSTASH_PORT} = process.env;
 const VALUE_FLUSH_INTERVAL = 100;
+const producerRd = new Kafka.HighLevelProducer({
+    'metadata.broker.list': process.env.KAFKA_HOST,
+    'linger.ms':0.1,
+    'queue.buffering.max.ms': 500,
+    'queue.buffering.max.messages':1000,
+});
 
-slogger.init({
+const producer = new RdKafkaProducer({
+    name : 'slogger.warn',
+    topic: 'topic.test',
+    producer:producerRd,
+    delayInterval: 500
+});
+
+slogger = slogger.init({
     flushInterval:VALUE_FLUSH_INTERVAL,
-    logstashes:[{
+    producers:[{
         category: 'warn',
-        server: new Logstash({
-            type: 'tcp',
-            host: 'locahost',// the host of your logstash server
-            port: 19001// the port of your logstash server
-
-        })
+        producer
     }]
 });
-slogger.warn('the warnning message which will be sended to logstash serveer');
+slogger.warn('the warnning message which will be sended to kafka serveer');
 ```
 ### Printing the log to console delayed with fixed interval.
 

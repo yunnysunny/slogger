@@ -11,7 +11,7 @@
 <dl>
 <dt><a href="#LogFileItem">LogFileItem</a></dt>
 <dd></dd>
-<dt><a href="#LogstashItem">LogstashItem</a></dt>
+<dt><a href="#QueueScheduleProducer">QueueScheduleProducer</a></dt>
 <dd></dd>
 </dl>
 
@@ -35,7 +35,7 @@ Init slogger
 | [otpions.level] | <code>String</code> | <code>time</code> | The level of logger, it can be `time` `trace` `debug` `warn`  `error`,the default is `time`. |
 | [options.flushInterval] | <code>Number</code> | <code>0</code> | Print the log to console in a fixed time, all logs between the interval will be cached, and then flush to console when the internal timer trigger.it only takes effect when you use custom console format. |
 | [options.logFiles] | [<code>Array.&lt;LogFileItem&gt;</code>](#LogFileItem) |  | The files to storage the log. |
-| [options.logstashes] | [<code>Array.&lt;LogstashItem&gt;</code>](#LogstashItem) |  | The logstash server config. |
+| [options.producers] | [<code>Array.&lt;QueueScheduleProducer&gt;</code>](#QueueScheduleProducer) |  | The instances of QueueScheduleProducer, which used to send log to kafka. |
 | [options.disableTimePrefix] | <code>Boolean</code> | <code>false</code> | Whether disable the time perfix. |
 | [options.projectName] | <code>String</code> | <code>&#x27;&#x27;</code> | The name of project which use slogger, it will be a field of data sent to logstash if you use. |
 
@@ -50,14 +50,14 @@ Init slogger
 | filename | <code>String</code> | The file to save the log. |
 | category | <code>String</code> | The category of the log , it can be the log level, such as `debug` `info` `warn` `error`, or it can be a custom string. |
 
-<a name="LogstashItem"></a>
+<a name="QueueScheduleProducer"></a>
 
-## LogstashItem
+## QueueScheduleProducer
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| server | <code>Logstash</code> | The `Logstash` server. |
+| producer | <code>RdKafkaProducer</code> | The instanceof `RdKafkaProducer` from the package of `queue-schedule`. |
 | category | <code>String</code> | The category of the log , it can be the log level, such as `debug` `info` `warn` `error`, or it can be a custom string. |
 

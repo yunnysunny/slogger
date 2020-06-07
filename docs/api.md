@@ -21,6 +21,18 @@
 The slogger object.
 
 **Kind**: global variable  
+
+* [slogger](#slogger)
+    * [.init([options])](#slogger.init) ⇒
+    * [.print(args, level)](#slogger.print)
+    * [.debug()](#slogger.debug)
+    * [.info()](#slogger.info)
+    * [.trace()](#slogger.trace)
+    * [.warn()](#slogger.warn)
+    * [.time(label)](#slogger.time)
+    * [.timeEnd(label)](#slogger.timeEnd)
+    * [.flush(callback)](#slogger.flush)
+
 <a name="slogger.init"></a>
 
 ### slogger.init([options]) ⇒
@@ -38,6 +50,75 @@ Init slogger
 | [options.producers] | [<code>Array.&lt;QueueScheduleProducer&gt;</code>](#QueueScheduleProducer) |  | The instances of QueueScheduleProducer, which used to send log to kafka. |
 | [options.disableTimePrefix] | <code>Boolean</code> | <code>false</code> | Whether disable the time perfix. |
 | [options.projectName] | <code>String</code> | <code>&#x27;&#x27;</code> | The name of project which use slogger, it will be a field of data sent to logstash if you use. |
+
+<a name="slogger.print"></a>
+
+### slogger.print(args, level)
+Print log with given level
+
+**Kind**: static method of [<code>slogger</code>](#slogger)  
+
+| Param | Type |
+| --- | --- |
+| args | <code>Array</code> \| <code>Arguments</code> | 
+| level | <code>String</code> | 
+
+<a name="slogger.debug"></a>
+
+### slogger.debug()
+Print debug log
+
+**Kind**: static method of [<code>slogger</code>](#slogger)  
+<a name="slogger.info"></a>
+
+### slogger.info()
+Print info log
+
+**Kind**: static method of [<code>slogger</code>](#slogger)  
+<a name="slogger.trace"></a>
+
+### slogger.trace()
+Print trace log
+
+**Kind**: static method of [<code>slogger</code>](#slogger)  
+<a name="slogger.warn"></a>
+
+### slogger.warn()
+Print warn log
+
+**Kind**: static method of [<code>slogger</code>](#slogger)  
+<a name="slogger.time"></a>
+
+### slogger.time(label)
+Call console.time
+
+**Kind**: static method of [<code>slogger</code>](#slogger)  
+
+| Param | Type |
+| --- | --- |
+| label | <code>String</code> | 
+
+<a name="slogger.timeEnd"></a>
+
+### slogger.timeEnd(label)
+Call console.timeEnd
+
+**Kind**: static method of [<code>slogger</code>](#slogger)  
+
+| Param | Type |
+| --- | --- |
+| label | <code>String</code> | 
+
+<a name="slogger.flush"></a>
+
+### slogger.flush(callback)
+Flush the log content to stdstream and filestreams.
+
+**Kind**: static method of [<code>slogger</code>](#slogger)  
+
+| Param | Type |
+| --- | --- |
+| callback | <code>function</code> | 
 
 <a name="LogFileItem"></a>
 

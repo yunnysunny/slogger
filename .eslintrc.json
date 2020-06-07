@@ -1,16 +1,10 @@
 {
     "env": {
         "mocha": true,
-        "commonjs": true,
-        "es6": false,
+        "es6": true,
         "node": true
     },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": false
-        },
-        "sourceType": "module"
-    },
+    "extends": "eslint:recommended",
     "rules": {
         "no-const-assign": "warn",
         "no-this-before-super": "warn",

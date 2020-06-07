@@ -1,3 +1,7 @@
+# v2.2.0
+## Add
+1. Add the function of `flush` to flush the log content to stdout and files.
+ 
 # v2.1.0
 ## Add
 1. Add the support of writting log to kafka.

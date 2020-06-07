@@ -40,6 +40,11 @@ var slogger = {
         // process.stderr.write(new Date().toLocaleString() + ' - init slogger,is tty:'+process.stdout.isTTY);
         return this;
     },
+    /**
+     * Print log with given level
+     * @param {Array|Arguments} args 
+     * @param {String} level 
+     */
     print : function(args,level) {
         if (!this._init) {
             this.init();
@@ -54,6 +59,9 @@ var slogger = {
         }
         return this._printer.print(argsArray,level);
     },
+    /**
+     * Print debug log
+     */
     debug : function() {
         if (this.level < DEBUG_LEVEL_VALUE) {
             return;
@@ -61,6 +69,9 @@ var slogger = {
 
         this.print(arguments, 'debug');
     },
+    /**
+     * Print info log
+     */
     info : function() {
         if (this.level < INFO_LEVEL_VALUE) {
             return;
@@ -68,6 +79,9 @@ var slogger = {
         
         this.print(arguments, 'info');
     },
+    /**
+     * Print trace log
+     */
     trace : function() {
         if (this.level < TRACE_LEVEL_VALUE) {
             return;
@@ -75,6 +89,9 @@ var slogger = {
         
         this.print(arguments, 'trace');
     },
+    /**
+     * Print warn log
+     */
     warn : function() {
         if (this.level < WARN_LEVEL_VALUE) {
             return;
@@ -89,17 +106,37 @@ var slogger = {
         
         this.print(arguments, 'error');
     },
+    /**
+     * Call console.time
+     * 
+     * @param {String} label 
+     */
     time : function(label) {
         if (this.level < TIME_LEVEL_VALUE) {
             return;
         }
+        // eslint-disable-next-line no-console
         console.time(label);
     },
+    /**
+     * Call console.timeEnd
+     * 
+     * @param {String} label 
+     */
     timeEnd : function(label) {
         if (this.level < TIME_LEVEL_VALUE) {
             return;
         }
+        // eslint-disable-next-line no-console
         console.timeEnd(label);
+    },
+    /**
+     * Flush the log content to stdstream and filestreams.
+     * 
+     * @param {Function} callback
+     */
+    flush: function(callback) {
+        this._printer.flush(callback);
     }
 };
 

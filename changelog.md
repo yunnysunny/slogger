@@ -1,3 +1,9 @@
+# v2.2.1
+
+## Fix
+
+1. Check the state of stream before writting to fix the issue [#2](https://github.com/yunnysunny/slogger/issues/2).
+
 # v2.2.0
 ## Add
 1. Add the function of `flush` to flush the log content to stdout and files.

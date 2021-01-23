@@ -42,69 +42,62 @@ var slogger = {
     },
     /**
      * Print log with given level
-     * @param {Array|Arguments} args 
+     *
      * @param {String} level 
+     * @param {Array} args 
      */
-    print : function(args,level) {
+    print : function(level, ...args) {
         if (!this._init) {
             this.init();
         }
-        if (Array.isArray(args)) {
-            return this._printer.print(args,level);
-        }
-        const len = args.length;
-        const argsArray = new Array(len);
-        for (var i=0;i<len;i++) {
-            argsArray[i] = args[i];
-        }
-        return this._printer.print(argsArray,level);
+        return this._printer.print(args,level);
     },
     /**
      * Print debug log
      */
-    debug : function() {
+    debug : function(...arguments) {
         if (this.level < DEBUG_LEVEL_VALUE) {
             return;
         }
 
-        this.print(arguments, 'debug');
+        this.print('debug', ...arguments);
     },
     /**
      * Print info log
      */
-    info : function() {
+    info : function(...arguments) {
         if (this.level < INFO_LEVEL_VALUE) {
             return;
         }
         
-        this.print(arguments, 'info');
+        this.print('info', ...arguments);
     },
     /**
      * Print trace log
      */
-    trace : function() {
+    trace : function(...arguments) {
         if (this.level < TRACE_LEVEL_VALUE) {
             return;
         }
         
-        this.print(arguments, 'trace');
+        this.print('trace', ...arguments);
     },
     /**
      * Print warn log
      */
-    warn : function() {
+    warn : function(...arguments) {
         if (this.level < WARN_LEVEL_VALUE) {
             return;
         }
         
-        this.print(arguments, 'warn');
+        this.print('warn', ...arguments);
     },
-    error : function() {
+    error : function(...arguments) {
         if (this.level < ERROR_LEVEL_VALUE) {
             return;
         }
         
-        this.print(arguments, 'error');
+        this.print('error', ...arguments);
     },
     /**
      * Call console.time

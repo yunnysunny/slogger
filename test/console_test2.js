@@ -5,7 +5,7 @@ describe('console with custom format #',function() {
     it('no time prefix',function() {
         slogger = slogger.init({
             disableTimePrefix: true,
-            disabledLevelPrefix: false,
+            disableLevelPrefix: false,
             flushInterval: 0
         });
         spyUtil.logWithConsoleInfo({
@@ -17,7 +17,7 @@ describe('console with custom format #',function() {
     it('no level prefix',function() {
         slogger = slogger.init({
             disableTimePrefix: false,
-            disabledLevelPrefix: true,
+            disableLevelPrefix: true,
             flushInterval: 0
         });
 
@@ -31,7 +31,7 @@ describe('console with custom format #',function() {
     it('no time and level prefix',function() {
         slogger = slogger.init({
             disableTimePrefix: true,
-            disabledLevelPrefix: true,
+            disableLevelPrefix: true,
             flushInterval: 0
         });
 

@@ -21,7 +21,7 @@ var slogger = {
      * @param {LogFileItem[]}  [options.logFiles] The files to storage the log.
      * @param {QueueScheduleProducer[]} [options.producers] The instances of QueueScheduleProducer, which used to send log to kafka.
      * @param {Boolean} [options.disableTimePrefix=false] Whether disable the time perfix.
-     * @param {Boolean=} [options.disabledLevelPrefix=false] Whether disble the level string prefix.
+     * @param {Boolean=} [options.disableLevelPrefix=false] Whether disble the level string prefix.
      * @param {String=} [options.projectName=''] The name of project which use slogger, it will be a field of data sent to logstash if you use.
      * @returns this
      */
@@ -56,49 +56,49 @@ var slogger = {
     /**
      * Print debug log
      */
-    debug : function(...arguments) {
+    debug : function(...args) {
         if (this.level < DEBUG_LEVEL_VALUE) {
             return;
         }
 
-        this.print('debug', ...arguments);
+        this.print('debug', ...args);
     },
     /**
      * Print info log
      */
-    info : function(...arguments) {
+    info : function(...args) {
         if (this.level < INFO_LEVEL_VALUE) {
             return;
         }
         
-        this.print('info', ...arguments);
+        this.print('info', ...args);
     },
     /**
      * Print trace log
      */
-    trace : function(...arguments) {
+    trace : function(...args) {
         if (this.level < TRACE_LEVEL_VALUE) {
             return;
         }
         
-        this.print('trace', ...arguments);
+        this.print('trace', ...args);
     },
     /**
      * Print warn log
      */
-    warn : function(...arguments) {
+    warn : function(...args) {
         if (this.level < WARN_LEVEL_VALUE) {
             return;
         }
         
-        this.print('warn', ...arguments);
+        this.print('warn', ...args);
     },
-    error : function(...arguments) {
+    error : function(...args) {
         if (this.level < ERROR_LEVEL_VALUE) {
             return;
         }
         
-        this.print('error', ...arguments);
+        this.print('error', ...args);
     },
     /**
      * Call console.time

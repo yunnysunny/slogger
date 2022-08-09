@@ -28,7 +28,7 @@ var spyStdout = exports.spyStdout = null;
 //     return spyStdout.info;//use console.info to simulate
 // }
 
-function logWithConsoleInfo(printLevel,disableTime,levelCanPrint) {
+function logWithConsoleInfo({printLevel, disableTime, disableLevel, levelCanPrint}) {
    
     // var stdout = getSpy(printLevel,disableTime);
 
@@ -40,11 +40,18 @@ function logWithConsoleInfo(printLevel,disableTime,levelCanPrint) {
     if (levelWannaPrint <= levelLimit) {
         assert(spyStdout.called);
         const date = new Date();
-        const perfix = [date.getFullYear(),(date.getMonth()+1),date.getDate()].join('-');
+        const prefixDate = [date.getFullYear(),(date.getMonth()+1),date.getDate()].join('-');
+        const printContent = spyStdout.args[0][0];
         if (disableTime) {
-            assert(spyStdout.args[0][0].indexOf(perfix) === -1);
+            assert(printContent.indexOf(prefixDate) === -1);
         } else {
-            assert(spyStdout.args[0][0].indexOf(perfix) !== -1);
+            assert(printContent.indexOf(prefixDate) !== -1);
+        }
+        const prefixLevel = '[' + printLevel.toUpperCase() + ']';
+        if (disableLevel) {
+            assert(printContent.indexOf(prefixLevel) === -1);
+        } else {
+            assert(printContent.indexOf(prefixLevel) !==-1);
         }
     } else {
         assert(spyStdout.notCalled);
@@ -58,19 +65,19 @@ function showLog(disableTime,levelCanPrint) {
     
 
     it('debug log',function() {
-        logWithConsoleInfo('debug',disableTime,levelCanPrint);
+        logWithConsoleInfo({printLevel:'debug',disableTime,levelCanPrint});
     });
     it('trace log',function() {
-        logWithConsoleInfo('trace',disableTime,levelCanPrint);
+        logWithConsoleInfo({printLevel:'trace',disableTime,levelCanPrint});
     });
     it('info log',function() {
-        logWithConsoleInfo('info',disableTime,levelCanPrint);
+        logWithConsoleInfo({printLevel:'info',disableTime,levelCanPrint});
     });
     it('warn log',function() {
-        logWithConsoleInfo('warn',disableTime,levelCanPrint);
+        logWithConsoleInfo({printLevel:'warn',disableTime,levelCanPrint});
     });
     it('error log',function() {
-        logWithConsoleInfo('error',disableTime,levelCanPrint);
+        logWithConsoleInfo({printLevel:'error',disableTime,levelCanPrint});
     });
 }
 exports.showLog = showLog;

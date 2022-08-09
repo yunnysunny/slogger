@@ -1,3 +1,9 @@
+# v2.3.0
+
+## Add
+
+1. Add `disabledLevelPrefix` parameter.
+
 # v2.2.1
 
 ## Fix

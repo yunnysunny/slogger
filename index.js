@@ -21,6 +21,7 @@ var slogger = {
      * @param {LogFileItem[]}  [options.logFiles] The files to storage the log.
      * @param {QueueScheduleProducer[]} [options.producers] The instances of QueueScheduleProducer, which used to send log to kafka.
      * @param {Boolean} [options.disableTimePrefix=false] Whether disable the time perfix.
+     * @param {Boolean=} [options.disabledLevelPrefix=false] Whether disble the level string prefix.
      * @param {String=} [options.projectName=''] The name of project which use slogger, it will be a field of data sent to logstash if you use.
      * @returns this
      */

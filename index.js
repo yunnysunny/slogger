@@ -12,6 +12,7 @@ const LOG_LEVEL_MAP = config.LOG_LEVEL_MAP;
  */
 var slogger = {
     config : config,
+    LogLevel: config,
     /**
      * Init slogger
      * 

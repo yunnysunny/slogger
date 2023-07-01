@@ -41,7 +41,7 @@ export type KafkaProducers = {
     category: string;
 };
 export interface SloggerOptions {
-  level: LogLevel //  The level of logger, it can be `time` `trace` `debug` `warn`  `error`,the default is `time`.
+  level?: LogLevel //  The level of logger, it can be `time` `trace` `debug` `warn`  `error`,the default is `time`.
   flushInterval?: number //  Print the log to console in a fixed time, all logs between the interval will be cached, and then flush to console when the internal timer trigger.it only takes effect when you use custom console format, default value is `false`.
   logFiles?: LogFileItem[] // The files to storage the log.
   producers?: KafkaProducers // The instances of QueueScheduleProducer, which used to send log to kafka.

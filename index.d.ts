@@ -14,6 +14,7 @@ export enum LogLevel {
   TIME = 'time',
   TRACE = 'trace',
   DEBUG = 'debug',
+  INFO = 'info',
   WARN = 'warn',
   ERROR = 'error'
 }
@@ -49,4 +50,8 @@ export interface SloggerOptions {
   disableLevelPrefix?: boolean// Whether disable the level string prefix, default value is `false`.
   projectName?: string // The name of project which use slogger, it will be a field of data sent to logstash if you use.
 }
-export function init(options: SloggerOptions): Slogger
+interface InitSlogger {
+  init(options: SloggerOptions): Slogger
+}
+declare const initSlogger: InitSlogger
+export default initSlogger 

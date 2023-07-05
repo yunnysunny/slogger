@@ -1,3 +1,8 @@
+# v2.4.0
+
+## Add
+1. Add typescript support.
+
 # v2.3.1
 
 ## Fix

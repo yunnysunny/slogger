@@ -1,0 +1,12 @@
+version: 2
+registries:
+  npm-mirror:
+    type: npm-registry
+    url: https://registry.npmmirror.org
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    registries:
+      - npm-registry
+    schedule:
+      interval: "weekly"

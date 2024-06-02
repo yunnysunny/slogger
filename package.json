@@ -25,7 +25,7 @@
     "upcode": "git pull origin master && git push origin master",
     "release": "git push && release-to-github-with-changelog",
     "tsc": "tsc",
-    "doc": "jsdoc2md index.js lib/LogPrinter.js > docs/api.md",
+    "doc": "typedoc --entryPointStrategy expand ./src",
     "build:cjs": "tsc",
     "build:esm": "tsc --project tsconfig-esm.json",
     "build": "npm run build:cjs && npm run build:esm"
@@ -44,6 +44,7 @@
   },
   "homepage": "https://github.com/yunnysunny/slogger",
   "devDependencies": {
+    "@microsoft/api-documenter": "^7.25.2",
     "@types/chai": "^4.3.16",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.13.0",
@@ -55,6 +56,7 @@
     "nyc": "^10.3.2",
     "sinon": "^3.2.0",
     "ts-node": "^10.9.2",
+    "typedoc": "^0.25.13",
     "typedoc-plugin-markdown": "^4.0.3",
     "typescript": "^5.4.5"
   }

@@ -29,7 +29,8 @@ The slogger t will print log to console with prefix of time string and log level
 for example `slogger.debug('debug')` will print `Thu Dec 15 2016 11:04:50 GMT+0800 (CST) [DEBUG] debug` . Different function will be printed with different color.
 
 ```javascript
-var slogger = require('../index');
+const {Slogger} = require('node-slogger');
+var slogger = new Slogger();
 
 slogger.debug('debug');
 slogger.info('info');
@@ -42,12 +43,13 @@ slogger.error('error');
 
 ```javascript
 const path = require('path');
-var slogger = require('../index');
+const fs = require('fs')
+const {Slogger, LogLevel} = require('node-slogger');
 
-slogger.init({
-    logFiles:[
-        {category:'error',filename:path.join(__dirname , './log/error.log')}
-    ]
+const slogger = new Slogger({
+    streams:{
+	    [LogLevel.ERROR]: fs.createWriteStream(path.join(__dirname , './log/error.log'))
+    }
 });
 
 slogger.debug('debug');//only print to console
@@ -58,45 +60,14 @@ slogger.error('error');//print to console and write to the file
 ```
 **The code of file_test.js**
 
-### Saving log to kafka
-Slogger support sending log to kafka. When you use the function, you have to add [queue-schedule](https://www.npmjs.com/package/queue-schedule) and [node-rdkafka](https://www.npmjs.com/package/node-rdkafka) to your dependecies manual.
 
-```javascript
-const Kafka = require('node-rdkafka');
-const {RdKafkaProducer} = require('queue-schedule');
-var slogger = require('node-slogger');
-// const {LOGSTASH_HOST,LOGSTASH_PORT} = process.env;
-const VALUE_FLUSH_INTERVAL = 100;
-const producerRd = new Kafka.HighLevelProducer({
-    'metadata.broker.list': process.env.KAFKA_HOST,
-    'linger.ms':0.1,
-    'queue.buffering.max.ms': 500,
-    'queue.buffering.max.messages':1000,
-});
-
-const producer = new RdKafkaProducer({
-    name : 'slogger.warn',
-    topic: 'topic.test',
-    producer:producerRd,
-    delayInterval: 500
-});
-
-slogger = slogger.init({
-    flushInterval:VALUE_FLUSH_INTERVAL,
-    producers:[{
-        category: 'warn',
-        producer
-    }]
-});
-slogger.warn('the warnning message which will be sended to kafka serveer');
-```
 ### Printing the log to console delayed with fixed interval.
 
 If you wanna you project run with high performance, printing to console frequently will cost a lot of cpu time. So slogger provide a feature of printing log in delay time with a fixed interval. 
 
 ```javascript
-var slogger = require('../index');
-slogger.init({flushInterval:500});
+const {Slogger} = require('node-slogger');
+const slogger = new Slogger({flushInterval:500});
 slogger.debug('this is a delay log');//it will show after 500ms
 ```
 
@@ -104,7 +75,8 @@ slogger.debug('this is a delay log');//it will show after 500ms
 You can set the level of log , just use the option of `level`. For example we set it to `warn`:
 
 ```javascript
-var slogger = require('../index').init({level:'warn'});
+const {Slogger} = require('node-slogger');
+const slogger = new Slogger({level:'warn');
 
 slogger.debug('debug');
 slogger.info('info');

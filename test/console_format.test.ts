@@ -1,27 +1,29 @@
-var slogger = require('../index');
-var spyUtil = require('./util/spy');   
+import {Slogger} from '../src/index';
+import {logWithConsoleInfo} from './util/spy';
     
 describe('console with custom format #',function() {
     it('no time prefix',function() {
-        slogger = slogger.init({
+        const slogger = new Slogger({
             disableTimePrefix: true,
             disableLevelPrefix: false,
             flushInterval: 0
         });
-        spyUtil.logWithConsoleInfo({
+        logWithConsoleInfo({
+            slogger,
             printLevel:'debug',
             disableTime: true,
             levelCanPrint: 'debug'
         });
     });
     it('no level prefix',function() {
-        slogger = slogger.init({
+        const slogger = new Slogger({
             disableTimePrefix: false,
             disableLevelPrefix: true,
             flushInterval: 0
         });
 
-        spyUtil.logWithConsoleInfo({
+        logWithConsoleInfo({
+            slogger,
             printLevel:'debug',
             disableLevel: true,
             levelCanPrint: 'debug'
@@ -29,13 +31,14 @@ describe('console with custom format #',function() {
     });
 
     it('no time and level prefix',function() {
-        slogger = slogger.init({
+        const slogger = new Slogger({
             disableTimePrefix: true,
             disableLevelPrefix: true,
             flushInterval: 0
         });
 
-        spyUtil.logWithConsoleInfo({
+        logWithConsoleInfo({
+            slogger,
             printLevel:'debug',
             disableTime: true,
             disableLevel: true,

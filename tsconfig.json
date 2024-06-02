@@ -3,12 +3,14 @@
     "target": "ES2021",
     "useDefineForClassFields": true,
     "module": "Node16",
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
     "strict": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "declaration": true,
+    "outDir": "lib/cjs",
   },
-  "include": ["ts/**/*.ts"]
+  "include": ["src/**/*.ts", "test/**/*.ts"],
 }

@@ -1,9 +1,0 @@
--r test/
---require ts-node/register
---exit
---recursive
---timeout 10000
---slow 750
---bail
---compilers ts:ts-node/register
---ui tdd

@@ -18,6 +18,7 @@ function readPackage(pkg, context) {
         const { typedoc, ...rest } = pkg.dependencies;
         pkg.dependencies = rest;
     }
+    return pkg;
 }
 
 module.exports = {

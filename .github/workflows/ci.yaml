@@ -33,7 +33,7 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Pnpm install
-        run: npm install pnpm -g
+        run: curl -fsSL https://get.pnpm.io/install.sh | sh -
       - name: Install Dependencies
         run: pnpm install
       - name: Test On Node ${{ matrix.node-version }}

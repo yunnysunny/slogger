@@ -1,6 +1,11 @@
 const fs = require('fs');
 const versionNode = Number(process.version.split('.')[0].substring(1));
-
+if (versionNode < 16) {
+    fs.unlinkSync('pnpm-lock.yaml');
+    console.log('delete pnpm-lock.yaml');
+} else {
+    console.log('pnpm-lock.yaml not delete');
+}
 function readPackage(pkg, context) {
     if (versionNode >= 16) {
         return pkg;
@@ -19,20 +24,12 @@ function readPackage(pkg, context) {
         const { typedoc, ...rest } = pkg.dependencies;
         pkg.dependencies = rest;
     }
+    context.log(pkg.dependencies)
     return pkg;
 }
 
 module.exports = {
     hooks: {
         readPackage,
-        beforeInstall: () => {
-            console.log('before pnpm install');
-            if (versionNode < 16) {
-                fs.unlinkSync('pnpm-lock.yaml');
-                console.log('delete pnpm-lock.yaml');
-            } else {
-                console.log('pnpm-lock.yaml not delete');
-            }
-        },
     }
 }

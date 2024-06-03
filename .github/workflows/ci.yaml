@@ -47,7 +47,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - name: Install Dependencies
-        run: pnpm install
+        run: |
+          if [ "${{ matrix.node-version }}" = "14.x" ]; then
+            pnpm install --no-frozen-lockfile
+          else
+            pnpm install
+          fi
+
       - name: Test On Node ${{ matrix.node-version }}
 
         run: |

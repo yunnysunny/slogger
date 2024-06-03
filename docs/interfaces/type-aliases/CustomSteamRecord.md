@@ -1,8 +1,8 @@
-[**node-slogger**](../../README.md) • **Docs**
+[**node-slogger**](../../index.md) • **Docs**
 
 ***
 
-[node-slogger](../../modules.md) / [interfaces](../README.md) / CustomSteamRecord
+[node-slogger](../../modules.md) / [interfaces](../index.md) / CustomSteamRecord
 
 # Type alias: CustomSteamRecord
 
@@ -10,4 +10,4 @@
 
 ## Source
 
-[interfaces.ts:68](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L68)
+[interfaces.ts:68](https://github.com/yunnysunny/slogger/blob/ab2000b987700b29e0d0fb17448f8d5322ccef45/src/interfaces.ts#L68)

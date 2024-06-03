@@ -1,4 +1,4 @@
-[**node-slogger**](../README.md) • **Docs**
+[**node-slogger**](../index.md) • **Docs**
 
 ***
 

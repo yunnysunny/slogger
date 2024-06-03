@@ -28,7 +28,7 @@
     "upcode": "git pull origin master && git push origin master",
     "release": "git push && release-to-github-with-changelog",
     "tsc": "tsc",
-    "doc": "typedoc --entryPointStrategy expand ./src",
+    "doc": "typedoc",
     "build:cjs": "tsc",
     "build:esm": "tsc --project tsconfig-esm.json",
     "build": "npm run build:cjs && npm run build:esm"

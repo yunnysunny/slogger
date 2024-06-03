@@ -24,7 +24,6 @@ function readPackage(pkg, context) {
         const { typedoc, ...rest } = pkg.dependencies;
         pkg.dependencies = rest;
     }
-    context.log(pkg.dependencies.typescript)
     return pkg;
 }
 

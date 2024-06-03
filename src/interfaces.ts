@@ -91,9 +91,13 @@ export interface SloggerOptions {
      * Whether disable the level string prefix.
      */
     disableLevelPrefix?: boolean;
+    // /**
+    //  * The name of project which use slogger
+    //  */
+    // projectName?: string;
     /**
-     * The name of project which use slogger
+     * The new line separator in console and stream
      */
-    projectName?: string;
+    newLineSeparator?: string
 }
 

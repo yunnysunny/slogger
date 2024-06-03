@@ -1,4 +1,4 @@
-import {  EOL as NEW_LINE_SEPARATOR}  from 'os';
+// import {  EOL as NEW_LINE_SEPARATOR}  from 'os';
 import {
     CustomSteamRecord,
     LogLevel,
@@ -8,6 +8,7 @@ import {
     SloggerOptions,
 } from './interfaces';
 import { Writable } from 'node:stream';
+import process from 'node:process';
 
 const PID = process.pid;
 const STREAM_BROKEN_MSG = `current process' [${PID}] stream is broken`;
@@ -27,7 +28,7 @@ function dateFormat(date: Date) {
         + '.' + date.getMilliseconds();
 }
 
-function myFormat(params: unknown[]) {
+function myFormat(params: unknown[], NEW_LINE_SEPARATOR: string) {
     var str = '';
     if (!params) {
         return str;
@@ -58,6 +59,7 @@ export class LoggerPrinter {
     private readonly _projectName?: string;
     private readonly customStreams?: CustomSteamRecord;
     private readonly customStreamsCache: Map<NormalLevel, string> = new Map()
+    private readonly newLineSeparator: string = '\n';
     public  constructor(options: SloggerOptions) {
 
         this._flushInterval = options.flushInterval|| 0;
@@ -65,8 +67,9 @@ export class LoggerPrinter {
         this._disableTimePrefix = options.disableTimePrefix;
         this._disableLevelPrefix = options.disableLevelPrefix;
         this.customStreamLen = 0;
-        this._projectName = options.projectName || '';
+        // this._projectName = options.projectName || '';
         this.customStreams = options.streams;
+        this.newLineSeparator = options.newLineSeparator || this.newLineSeparator;
         if (this.customStreams) {
             for (const level in this.customStreams) {
                 this.customStreamsCache.set(level as NormalLevel, '');
@@ -173,7 +176,7 @@ export class LoggerPrinter {
         for (var i=1;i<=len;i++) {
             params[i] = args[i-1];
         }
-        const logContent = myFormat(params) + NEW_LINE_SEPARATOR;
+        const logContent = myFormat(params, this.newLineSeparator) + this.newLineSeparator;
         const customStream = this.customStreams?.[level];
         if (this._flushInterval > 0) {
             this._logCache += logContent;

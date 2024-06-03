@@ -22,7 +22,7 @@
 
 #### Source
 
-[logger-printer.ts:61](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L61)
+[logger-printer.ts:61](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L61)
 
 ## Properties
 
@@ -32,7 +32,7 @@
 
 #### Source
 
-[logger-printer.ts:56](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L56)
+[logger-printer.ts:56](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L56)
 
 ***
 
@@ -42,7 +42,7 @@
 
 #### Source
 
-[logger-printer.ts:55](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L55)
+[logger-printer.ts:55](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L55)
 
 ***
 
@@ -52,7 +52,7 @@
 
 #### Source
 
-[logger-printer.ts:53](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L53)
+[logger-printer.ts:53](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L53)
 
 ***
 
@@ -62,7 +62,7 @@
 
 #### Source
 
-[logger-printer.ts:54](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L54)
+[logger-printer.ts:54](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L54)
 
 ***
 
@@ -72,7 +72,7 @@
 
 #### Source
 
-[logger-printer.ts:58](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L58)
+[logger-printer.ts:58](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L58)
 
 ***
 
@@ -82,7 +82,7 @@
 
 #### Source
 
-[logger-printer.ts:57](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L57)
+[logger-printer.ts:57](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L57)
 
 ***
 
@@ -92,7 +92,7 @@
 
 #### Source
 
-[logger-printer.ts:59](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L59)
+[logger-printer.ts:59](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L59)
 
 ***
 
@@ -102,7 +102,7 @@
 
 #### Source
 
-[logger-printer.ts:60](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L60)
+[logger-printer.ts:60](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L60)
 
 ## Accessors
 
@@ -116,7 +116,7 @@
 
 #### Source
 
-[logger-printer.ts:140](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L140)
+[logger-printer.ts:140](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L140)
 
 ## Methods
 
@@ -136,7 +136,7 @@ Flush the log content to std stream and custom streams.
 
 #### Source
 
-[logger-printer.ts:126](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L126)
+[logger-printer.ts:126](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L126)
 
 ***
 
@@ -154,7 +154,7 @@ Flush the log content to std stream and custom streams.
 
 #### Source
 
-[logger-printer.ts:94](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L94)
+[logger-printer.ts:94](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L94)
 
 ***
 
@@ -168,7 +168,7 @@ Flush the log content to std stream and custom streams.
 
 #### Source
 
-[logger-printer.ts:148](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L148)
+[logger-printer.ts:148](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L148)
 
 ***
 
@@ -186,7 +186,7 @@ Flush the log content to std stream and custom streams.
 
 #### Source
 
-[logger-printer.ts:144](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L144)
+[logger-printer.ts:144](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L144)
 
 ***
 
@@ -206,7 +206,7 @@ Flush the log content to std stream and custom streams.
 
 #### Source
 
-[logger-printer.ts:160](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L160)
+[logger-printer.ts:160](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L160)
 
 ***
 
@@ -228,4 +228,4 @@ Flush the log content to std stream and custom streams.
 
 #### Source
 
-[logger-printer.ts:81](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/logger-printer.ts#L81)
+[logger-printer.ts:81](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/logger-printer.ts#L81)

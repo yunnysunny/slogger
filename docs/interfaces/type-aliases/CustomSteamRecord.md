@@ -10,4 +10,4 @@
 
 ## Source
 
-[interfaces.ts:68](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L68)
+[interfaces.ts:68](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L68)

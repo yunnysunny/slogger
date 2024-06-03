@@ -16,7 +16,7 @@ Whether disable the level string prefix.
 
 #### Source
 
-[interfaces.ts:93](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L93)
+[interfaces.ts:93](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L93)
 
 ***
 
@@ -28,7 +28,7 @@ Whether disable the time prefix.
 
 #### Source
 
-[interfaces.ts:89](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L89)
+[interfaces.ts:89](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L89)
 
 ***
 
@@ -43,7 +43,7 @@ it only takes effect when you use custom console format.
 
 #### Source
 
-[interfaces.ts:81](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L81)
+[interfaces.ts:81](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L81)
 
 ***
 
@@ -55,7 +55,7 @@ The level of logger, it can be `time` `trace` `debug` `warn`  `error`,the defaul
 
 #### Source
 
-[interfaces.ts:74](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L74)
+[interfaces.ts:74](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L74)
 
 ***
 
@@ -67,7 +67,7 @@ The name of project which use slogger
 
 #### Source
 
-[interfaces.ts:97](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L97)
+[interfaces.ts:97](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L97)
 
 ***
 
@@ -79,4 +79,4 @@ The streams to storage the log
 
 #### Source
 
-[interfaces.ts:85](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L85)
+[interfaces.ts:85](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L85)

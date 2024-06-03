@@ -14,7 +14,7 @@
 
 #### Source
 
-[interfaces.ts:8](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L8)
+[interfaces.ts:8](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L8)
 
 ***
 
@@ -24,7 +24,7 @@
 
 #### Source
 
-[interfaces.ts:11](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L11)
+[interfaces.ts:11](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L11)
 
 ***
 
@@ -34,7 +34,7 @@
 
 #### Source
 
-[interfaces.ts:9](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L9)
+[interfaces.ts:9](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L9)
 
 ***
 
@@ -44,7 +44,7 @@
 
 #### Source
 
-[interfaces.ts:6](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L6)
+[interfaces.ts:6](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L6)
 
 ***
 
@@ -54,7 +54,7 @@
 
 #### Source
 
-[interfaces.ts:7](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L7)
+[interfaces.ts:7](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L7)
 
 ***
 
@@ -64,4 +64,4 @@
 
 #### Source
 
-[interfaces.ts:10](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/interfaces.ts#L10)
+[interfaces.ts:10](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/interfaces.ts#L10)

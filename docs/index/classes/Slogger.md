@@ -22,7 +22,7 @@
 
 #### Source
 
-[index.ts:9](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L9)
+[index.ts:9](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L9)
 
 ## Properties
 
@@ -32,7 +32,7 @@
 
 #### Source
 
-[index.ts:7](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L7)
+[index.ts:7](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L7)
 
 ***
 
@@ -42,7 +42,7 @@
 
 #### Source
 
-[index.ts:6](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L6)
+[index.ts:6](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L6)
 
 ## Accessors
 
@@ -56,7 +56,7 @@
 
 #### Source
 
-[index.ts:22](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L22)
+[index.ts:22](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L22)
 
 ## Methods
 
@@ -76,7 +76,7 @@ Print debug log
 
 #### Source
 
-[index.ts:38](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L38)
+[index.ts:38](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L38)
 
 ***
 
@@ -94,7 +94,7 @@ Print debug log
 
 #### Source
 
-[index.ts:66](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L66)
+[index.ts:66](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L66)
 
 ***
 
@@ -114,7 +114,7 @@ Flush the log content to std stream and custom stream.
 
 #### Source
 
-[index.ts:100](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L100)
+[index.ts:100](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L100)
 
 ***
 
@@ -134,7 +134,7 @@ Print info log
 
 #### Source
 
-[index.ts:45](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L45)
+[index.ts:45](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L45)
 
 ***
 
@@ -156,7 +156,7 @@ Print log with given level
 
 #### Source
 
-[index.ts:29](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L29)
+[index.ts:29](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L29)
 
 ***
 
@@ -176,7 +176,7 @@ Call console.time
 
 #### Source
 
-[index.ts:76](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L76)
+[index.ts:76](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L76)
 
 ***
 
@@ -196,7 +196,7 @@ Call console.timeEnd
 
 #### Source
 
-[index.ts:88](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L88)
+[index.ts:88](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L88)
 
 ***
 
@@ -216,7 +216,7 @@ Print trace log
 
 #### Source
 
-[index.ts:53](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L53)
+[index.ts:53](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L53)
 
 ***
 
@@ -236,4 +236,4 @@ Print warn log
 
 #### Source
 
-[index.ts:61](https://github.com/yunnysunny/slogger/blob/13477b035f2eb98b303f1e9ef9f46f15789fc865/src/index.ts#L61)
+[index.ts:61](https://github.com/yunnysunny/slogger/blob/c316c2f81f4f3f44e3c58ccfee459eae1daf4268/src/index.ts#L61)

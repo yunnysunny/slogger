@@ -26,7 +26,7 @@ describe('flush test #',function() {
         spyWrite = sinon.spy(stream,'write');
     });
 
-    it.only('write to file ' + WRITE_COUNT + ' times',function(done) {
+    it('write to file ' + WRITE_COUNT + ' times',function(done) {
         for (var i=0;i<WRITE_COUNT;i++) {
             slogger.warn(i);
         }

@@ -46,8 +46,6 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      - name: Pnpm install
-        run: curl -fsSL https://get.pnpm.io/install.sh | sh -
       - name: Install Dependencies
         run: pnpm install
       - name: Test On Node ${{ matrix.node-version }}

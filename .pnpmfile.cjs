@@ -26,9 +26,12 @@ module.exports = {
     hooks: {
         readPackage,
         beforeInstall: () => {
+            console.log('before pnpm install');
             if (versionNode < 16) {
                 fs.unlinkSync('pnpm-lock.yaml');
                 console.log('delete pnpm-lock.yaml');
+            } else {
+                console.log('pnpm-lock.yaml not delete');
             }
         },
     }

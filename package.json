@@ -17,6 +17,9 @@
       }
     }
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "scripts": {
     "test": "nyc mocha -r ts-node/register test/**/*.ts --timeout 10000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -53,7 +56,7 @@
     "chai": "^4.1.1",
     "coveralls": "^3.0.2",
     "mocha": "^3.5.0",
-    "nyc": "^10.3.2",
+    "nyc": "^14.1.1",
     "sinon": "^3.2.0",
     "ts-node": "^10.9.2",
     "typedoc": "^0.25.13",

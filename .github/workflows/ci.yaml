@@ -35,7 +35,7 @@ jobs:
       - name: Start services
         run: ./run_docker.sh
       - name: Install Dependencies
-        run: yarn install
+        run: pnpm install
       - name: Test On Node ${{ matrix.node-version }}
 
         run: |

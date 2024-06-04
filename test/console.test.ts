@@ -1,9 +1,10 @@
-const sinon  = require('sinon');
-const assert = require('assert');
-var slogger = require('../index');
-var spyUtil = require('./util/spy');
-var showLog = spyUtil.showLog;
-// var spyStdout = require('./util/spy').spyStdout;
+import   sinon from 'sinon';
+import   assert from 'node:assert';
+
+import { showLog, spyStdout } from './util/spy'; // 假设spy.js导出一个spyUtil对象或函数
+import { LogLevel, Slogger } from '../src';
+
+
 
 function doHeavyWork() {
     for (var i=0;i<20000000;i++) {
@@ -11,30 +12,27 @@ function doHeavyWork() {
     }
 }
 
-describe('console:',function() {
+describe('console basic:',function() {
     describe('test with time #',function() {
-        before('before basic test',function() {
-            slogger = slogger.init({level:'trace',flushInterval:0});
-        });
-        showLog();
+        const slogger = new Slogger({level:'trace' as LogLevel,flushInterval:0});
+        showLog(slogger);
     });
     
     describe('after set log level to warn#',function() {
         before('should set log level warn success',function() {
-            slogger = slogger.init({level:'warn',flushInterval:0});
+            const slogger = new Slogger({level:'warn' as LogLevel,flushInterval:0});
+            showLog(slogger, false,'warn' as LogLevel);
         });
-        showLog(false,'warn');
     });
 
     describe('print to console delay in fixed interval',function() {
         it('not print right now, but after a fixed time',function(done) {
-            var spy =  spyUtil.spyStdout;
             var interval = 500;
-            slogger = slogger.init({flushInterval:interval});
+            const slogger = new Slogger({flushInterval:interval});
             slogger.debug('delay print');
-            assert(spy.notCalled);
+            assert(spyStdout.notCalled);
             setTimeout(function() {
-                assert(spy.called);
+                assert(spyStdout.called);
                 //spy.restore();
                 done();
             },interval*2);//make sure the internal timer triggered
@@ -45,7 +43,7 @@ describe('console:',function() {
     describe('do time calculate#',function() {
         it('should not show time when level not match',function() {
             var spy =  sinon.spy(console, 'time');
-            slogger = slogger.init({level:'debug'});
+            const slogger = new Slogger({level:'debug' as LogLevel});
             slogger.time('heavyWork');
             doHeavyWork();
             slogger.timeEnd('heavyWork');
@@ -53,7 +51,7 @@ describe('console:',function() {
             spy.restore();
         });
         it('should show time result',function() {
-            slogger = slogger.init();
+            const slogger = new Slogger();
             var spy =  sinon.spy(console, 'time');
             slogger.time('heavyWork');
             doHeavyWork();

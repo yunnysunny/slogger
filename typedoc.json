@@ -1,0 +1,10 @@
+{
+  "plugin": ["typedoc-plugin-markdown"],
+  "entryPoints": ["./src/**/*.ts"],
+  "exclude": [ "./README.md"],
+  "readme": "none",
+  "entryFileName": "index",
+  "entryModule": "index",
+  "out": "./docs"
+}
+  

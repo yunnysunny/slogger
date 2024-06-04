@@ -4,5 +4,6 @@
         "module": "ESNext",
         "moduleResolution": "bundler",
         "outDir": "lib/esm"
-    }
+    },
+    "include": ["src/**/*.ts"]
 }

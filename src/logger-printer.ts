@@ -9,10 +9,11 @@ import {
 } from './interfaces';
 import { Writable } from 'node:stream';
 import process from 'node:process';
+import { ServerlessStdStream } from './serverless-std-stream';
 
 const PID = process.pid;
 const STREAM_BROKEN_MSG = `current process' [${PID}] stream is broken`;
-const consoleStream = process.stdout;
+const consoleStream = process.stdout || new ServerlessStdStream();
 
 
 

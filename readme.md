@@ -92,9 +92,9 @@ See the document of [api](docs/index.md).
 
 ## Known issues
 
-### 1. Not showing log on VS Code's debug pannel
+### 1. Not showing log on VS Code's debug panel
 
-You should modify the `launch.json` and add the parameter `console` with the value `integratedTerminal`. This is an example:
+You should modify the `launch.json` and add the parameter `outputCapture` with the value `std` and parameter `console` with `internalConsole`. This is an example:
 
 ```json
 {
@@ -110,11 +110,48 @@ You should modify the `launch.json` and add the parameter `console` with the val
         "--colors",
         "${workspaceFolder}/src/test/mocha"
     ],
-    "console": "integratedTerminal",
+    "console": "internalConsole",
+    "outputCapture": "std",
     "internalConsoleOptions": "openOnSessionStart"
 },
 ```
+## Breaking changes on 3.x
 
+1. Singleton object are no longer the default exported and must be manually created based on the exported slogger class.
+
+```JavaScript
+// code in 2.x and below
+const slogger = require('node-slogger').init({});
+```
+
+```JavaScript
+// code in 3.x
+const { Slogger } = require('node-slogger');
+const slogger = new Slogger();
+```
+2. Support for input file objects has been removed. Now, it is required to use a writeable stream instead.
+
+```JavaScript
+// code in 2.x and below
+const path = require('path');
+const slogger = require('node-slogger').init({
+    logFiles:[
+        {category:'error',filename:path.join(__dirname , './log/error.log')}
+    ]
+});
+```
+
+```JavaScript
+// code in 3.x
+const { Slogger } = require('node-slogger');
+const fs = require('fs');
+const slogger = new Slogger({
+    streams:{
+      [LogLevel.ERROR]: fs.createWriteStream(path.join(__dirname , './log/error.log'))
+    }
+});
+```
+3. Useless Kafka feature support has been removed.
 ## License
 
 [MIT](LICENSE)

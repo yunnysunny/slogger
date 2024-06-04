@@ -6,23 +6,19 @@ if (versionNode < 16) {
 } else {
     console.log('pnpm-lock.yaml not delete');
 }
-function readPackage(pkg, context) {
+function readPackage(pkg) {
     if (versionNode >= 16) {
         return pkg;
     }
-    if (pkg.name === 'typescript') {
-        pkg.dependencies = {
-            ...pkg.dependencies,
-            'typescript': '4.9.5'
-        }
-    } else if (pkg.name === 'triple-beam') {
-        pkg.dependencies = {
-            ...pkg.dependencies,
-            'triple-beam': '1.3.0'
-        }
-    } else if (pkg.name === 'typedoc') {
-        const { typedoc, ...rest } = pkg.dependencies;
-        pkg.dependencies = rest;
+    const { devDependencies } = pkg
+    if (devDependencies?.typescript) {
+        devDependencies.typescript = '4.9.5'
+    }
+    if (devDependencies?.typedoc) {
+        delete devDependencies.typescript
+    }
+    if (devDependencies?.['typedoc-plugin-markdown']) {
+        delete devDependencies['typedoc-plugin-markdown']
     }
     return pkg;
 }

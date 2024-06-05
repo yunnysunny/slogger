@@ -24,14 +24,17 @@ jobs:
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
-      - name: Debug npmrc
-        run: cat .npmrc
+      # - name: Debug npmrc
+      #   run: cat .npmrc
       - uses: pnpm/action-setup@v4
         name: Install pnpm
         with:
           version: 9
           run_install: true
-      - uses: simenandre/publish-with-pnpm@v2
-        with:
-          npm-auth-token: ${{ secrets.NPM_TOKEN }}
+      - name: Publish
+        run: |
+          npm run build
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       

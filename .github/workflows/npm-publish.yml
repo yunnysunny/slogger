@@ -31,6 +31,9 @@ jobs:
         with:
           version: 9
           run_install: true
-      - run: cat .npmrc && npm publish --verbose
+      - run: |
+          cat .npmrc
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+          npm publish --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

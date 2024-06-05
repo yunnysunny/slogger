@@ -29,6 +29,6 @@ jobs:
         with:
           version: 8
           run_install: true
-      - run: npm publish
+      - run: npm publish --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

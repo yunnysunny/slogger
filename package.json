@@ -26,7 +26,6 @@
     "bump_path": "npm version patch -m \"upgrade to %s\"",
     "bump_minor": "npm version minor -m \"upgrade to %s\"",
     "upcode": "git pull origin master && git push origin master",
-    "release": "git push && release-to-github-with-changelog",
     "tsc": "tsc",
     "doc": "typedoc",
     "prebuild": "rimraf lib",

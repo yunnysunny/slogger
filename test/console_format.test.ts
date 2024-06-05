@@ -1,4 +1,4 @@
-import {Slogger} from '../src/index';
+import {LogLevel, Slogger} from '../src/index';
 import {logWithConsoleInfo} from './util/spy';
     
 describe('console with custom format #',function() {
@@ -12,7 +12,7 @@ describe('console with custom format #',function() {
             slogger,
             printLevel:'debug',
             disableTime: true,
-            levelCanPrint: 'debug'
+            levelCanPrint: 'debug' as LogLevel
         });
     });
     it('no level prefix',function() {
@@ -26,7 +26,7 @@ describe('console with custom format #',function() {
             slogger,
             printLevel:'debug',
             disableLevel: true,
-            levelCanPrint: 'debug'
+            levelCanPrint: 'debug' as LogLevel
         });
     });
 
@@ -42,7 +42,7 @@ describe('console with custom format #',function() {
             printLevel:'debug',
             disableTime: true,
             disableLevel: true,
-            levelCanPrint: 'debug'
+            levelCanPrint: 'debug' as LogLevel
         });
     });
 });

@@ -29,7 +29,7 @@ export function logWithConsoleInfo( {
     printLevel: string, 
     disableTime?: boolean, 
     disableLevel?: boolean, 
-    levelCanPrint: string
+    levelCanPrint: LogLevel
 }) {
     const levelStr = printLevel as LogLevel;
     (slogger as any)[printLevel](levelStr);
@@ -60,23 +60,33 @@ export function logWithConsoleInfo( {
 
 export function showLog(slogger: Slogger, disableTime?: boolean,levelCanPrint?: LogLevel) {
     disableTime = disableTime || false;
-    levelCanPrint = levelCanPrint || LogLevel.TIME;
+    const _levelCanPrint = (levelCanPrint || LogLevel.TIME) as LogLevel;
     
 
     it('debug log',function() {
-        logWithConsoleInfo({slogger, printLevel:'debug',disableTime,levelCanPrint});
+        logWithConsoleInfo({
+            slogger, printLevel:'debug',disableTime,levelCanPrint: _levelCanPrint
+        });
     });
     it('trace log',function() {
-        logWithConsoleInfo({slogger, printLevel: 'trace',disableTime,levelCanPrint});
+        logWithConsoleInfo({
+            slogger, printLevel: 'trace',disableTime,levelCanPrint: _levelCanPrint
+        });
     });
     it('info log',function() {
-        logWithConsoleInfo({slogger, printLevel: 'info',disableTime,levelCanPrint});
+        logWithConsoleInfo({
+            slogger, printLevel: 'info',disableTime,levelCanPrint: _levelCanPrint
+        });
     });
     it('warn log',function() {
-        logWithConsoleInfo({slogger, printLevel: 'warn',disableTime,levelCanPrint});
+        logWithConsoleInfo({
+            slogger, printLevel: 'warn',disableTime,levelCanPrint: _levelCanPrint
+        });
     });
     it('error log',function() {
-        logWithConsoleInfo({slogger, printLevel: 'error', disableTime,levelCanPrint});
+        logWithConsoleInfo({
+            slogger, printLevel: 'error', disableTime,levelCanPrint: _levelCanPrint
+        });
     });
 }
 

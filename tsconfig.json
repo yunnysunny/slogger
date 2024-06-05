@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
+    "target": "ES2015",
     "useDefineForClassFields": true,
     "module": "Node16",
     "moduleResolution": "Node16",

@@ -10,7 +10,7 @@ function readPackage(pkg) {
         devDependencies.typescript = '4.9.5'
     }
     if (devDependencies.typedoc) {
-        delete devDependencies.typescript
+        delete devDependencies.typedoc
     }
     if (devDependencies['typedoc-plugin-markdown']) {
         delete devDependencies['typedoc-plugin-markdown']

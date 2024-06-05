@@ -14,8 +14,8 @@ jobs:
     strategy:
       matrix:
        include:
-        - node-version: 12.x
-          pnpm-version: 6
+        # - node-version: 12.x
+        #   pnpm-version: 6
         - node-version: 14.x
           pnpm-version: 7
         - node-version: 16.x

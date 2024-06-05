@@ -152,6 +152,7 @@ const slogger = new Slogger({
 });
 ```
 3. Useless Kafka feature support has been removed.
+4. Drop the support for node 12 and below.
 ## License
 
 [MIT](LICENSE)

@@ -31,9 +31,7 @@ jobs:
         with:
           version: 9
           run_install: true
-      - run: |
-          cat .npmrc
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
-          npm publish --verbose
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: simenandre/publish-with-pnpm@v2
+        with:
+          npm-auth-token: ${{ secrets.NPM_TOKEN }}
+      

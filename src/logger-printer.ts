@@ -15,7 +15,13 @@ const PID = process.pid;
 const STREAM_BROKEN_MSG = `current process' [${PID}] stream is broken`;
 const consoleStream = process.stdout || new ServerlessStdStream();
 
-
+function padStart(value: number, length: number) {
+    const str = value.toString();
+    if (length <= str.length) {
+        return str;
+    }
+    return '0'.repeat(length - str.length) + str;
+}
 
 /**
  * Format the Date to a string.
@@ -26,7 +32,7 @@ const consoleStream = process.stdout || new ServerlessStdStream();
 function dateFormat(date: Date) {
     return date.getFullYear()+'-' + (date.getMonth() + 1) + '-'+date.getDate()
         + ' '+date.getHours()+':'+date.getMinutes() + ':'+date.getSeconds()
-        + '.' + date.getMilliseconds();
+        + '.' + padStart(date.getMilliseconds(), 3)
 }
 
 function myFormat(params: unknown[], NEW_LINE_SEPARATOR: string) {

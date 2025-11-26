@@ -1,3 +1,50 @@
+# v3.0.1
+## Improve
+1. Padding millisecond to 3 length string.
+# v3.0.0
+## Breaking changes on 3.x
+
+1. Singleton object are no longer the default exported and must be manually created based on the exported slogger class.
+
+```JavaScript
+// code in 2.x and below
+const slogger = require('node-slogger').init({});
+```
+
+```JavaScript
+// code in 3.x
+const { Slogger } = require('node-slogger');
+const slogger = new Slogger();
+```
+2. Support for input file objects has been removed. Now, it is required to use a writeable stream instead.
+
+```JavaScript
+// code in 2.x and below
+const path = require('path');
+const slogger = require('node-slogger').init({
+    logFiles:[
+        {category:'error',filename:path.join(__dirname , './log/error.log')}
+    ]
+});
+```
+
+```JavaScript
+// code in 3.x
+const { Slogger } = require('node-slogger');
+const fs = require('fs');
+const slogger = new Slogger({
+    streams:{
+      [LogLevel.ERROR]: fs.createWriteStream(path.join(__dirname , './log/error.log'))
+    }
+});
+```
+3. Useless Kafka feature support has been removed.
+4. Drop the support for node 12 and below.
+## Add
+
+1. The project has been rewritten using TypeScript, which supports both CJS and MJS modules.
+2. The tool now supports embedding into a serverless service.
+
 # v2.4.0
 
 ## Add

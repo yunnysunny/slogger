@@ -6,12 +6,9 @@ name: Node.js Package
 on:
   release:
     types: [created]
-  # workflow_run:
-  #   workflows: ["CI"]
-  #   tags:
-  #     - "v*.*.*"
-  #   types: 
-  #     - completed
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
 
 jobs:
   publish-npm:
@@ -23,19 +20,18 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 24
           registry-url: https://registry.npmjs.org/
       # - name: Debug npmrc
       #   run: cat .npmrc
       - uses: pnpm/action-setup@v4
         name: Install pnpm
         with:
-          version: 9
+          version: 10
           run_install: true
       - name: Publish
         run: |
           npm run build
           npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
       

@@ -6,7 +6,7 @@ import { LogLevelRecord } from "../../src/interfaces";
 const stdout = process.stdout;
 
 export let spyStdout: sinon.SinonSpy<
-[str: string | Uint8Array, encoding?: BufferEncoding | undefined, cb?: ((err?: Error | undefined) => void) | undefined],
+[str: string | Uint8Array, encoding?: BufferEncoding | undefined, cb?: ((err?: Error | null | undefined) => void) | undefined],
 boolean
 >;
 // type PublicMethods<T> = Pick<T, { [K in keyof T]: T[K] extends Function ? K : never }>;

@@ -56,11 +56,7 @@ jobs:
       #       ${{ runner.os }}-pnpm-store-
       - name: Install Dependencies
         run: |
-          if [ "${{ matrix.node-version }}" = "14.x" ]; then
-            pnpm install --no-frozen-lockfile
-          else
-            pnpm install
-          fi
+          pnpm install --no-frozen-lockfile
 
       - name: Test On Node ${{ matrix.node-version }}
 
